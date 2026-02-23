@@ -12,7 +12,7 @@
 
 #### How to login to the workstation
 
-	ssh -p 22110 USERNAME@10.153.134.10
+	ssh -p 22110 USERNAME@xx.xxx.xxx.xx
 
 
 ### Every time you see `$USERNAME` in the example command, you need to replace it with your own [USERNAME](https://github.com/dfmoralesb/MPE_tutorials/blob/main/README.md)<br>
@@ -175,11 +175,8 @@
 		
 * Now we can format them using the following loop
 	
-	
-		for i in $(ls *.fna); do
-		sed -i -E 's/(>.+)(__)([[:digit:]]+)( .+)/\1@pg_\3/' $i
-		sed -i -E 's/(>.+)( \[query=.+)/\1@pg_uq/' $i
-		done
+		
+		for i in *.fna; do sed -i -E 's/(>.+)(__)([[:digit:]]+)( .+)/\1@pg_\3/; s/(>.+)( \[query=.+)/\1@pg_uq/' "$i"; done
 		
 	After it is done, you can verify if the format is correct.
 	
@@ -190,7 +187,7 @@
 	Because of time restrictions, we are not going to run all `348` trees. I ran this previously. As we learned before, I use IQ-Tree for this. I ran the following command for each tree so that you know what I did.
 	
 	
-		iqtree -m MFP -s [alignment] -T 4 --seqtype DNA #Do not run this
+		echo iqtree -m MFP -s [alignment] -T 4 --seqtype DNA #Do not run this
 	
 	
 	The output of IQ-tree can be found here `/data_tmp/$USERNAME/output/04_analyses/00_iqtree`
@@ -559,7 +556,7 @@
 		
 	You should see `ortho_stats.txt` and `taxon_stats.txt`
 	
-	Let's open RStudio. In your browser address bar, type `10.153.134.10:8787` When you are prompted for the login information, use the same USERNAME and password you have been using for login into the workstation
+	Let's open RStudio. In your browser address bar, type `xx.xxx.xxx.xx:8787` When you are prompted for the login information, use the same USERNAME and password you have been using for login into the workstation
 	
 	
 	<p align="center"><img src="images/R.png" alt="R" width="400"></p>
@@ -702,16 +699,16 @@
  		Usage:
 		python collapse_branches_bs.py inMultiTree, bs_min_value
 		
-	You must provide the file containing all gene trees and a bootstrap threshold to collapse the node. In this case, we are going to use 70%
+	You must provide the file containing all gene trees and a bootstrap threshold to collapse the node. In this case, we are going to use 20%
 	
 	
-		python /data_tmp/$USERNAME/script/collapse_branches_bs_multiphylo.py meliaceae_334_MO_orthologs.tre 70
+		python /data_tmp/$USERNAME/script/collapse_branches_bs_multiphylo.py meliaceae_334_MO_orthologs.tre 20
 		
-	The output file will be called `meliaceae_334_MO_orthologs.col_70.tre`
+	The output file will be called `meliaceae_334_MO_orthologs.col_20.tre`
 	
 	This will be our input for ASTRAL.
 	
-		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral -i meliaceae_334_MO_orthologs.col_70.tre -o meliaceae_334_MO_orthologs.ASTRAL.tre 2> >(tee -a ASTRAL.log >&2)
+		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.ASTRAL.tre 2> >(tee -a ASTRAL.log >&2)
 		
 	This should take a few seconds, and the output file will be called `meliaceae_334_MO_orthologs.ASTRAL.tre`
 	
