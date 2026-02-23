@@ -931,7 +931,6 @@
 <p align="center"><img src="images/astralpro.png" alt="astralpro" width=900"></p>
 
 	
-	<a name="options"></a>
 ## Other options for species tree inference
 
 * There is another version of ASTRAL, Weighted ASTRAL. Weighted ASTRAL introduce threshold-free weighting schemes for the quartet-based species tree inference. By reducing the impact of quartets with low support or long terminal branches (or both), weighting provides stronger theoretical guarantees and better empirical performance than the unweighted ("normal") ASTRAL.
