@@ -13,7 +13,7 @@
 
 #### How to login to the workstation
 
-	ssh -p 22110 USERNAME@10.153.134.10
+	ssh -p 22110 USERNAME@xx.xxx.xxx.xx
 
 ### Every time you see `$USERNAME` in the example command, you need to replace it with your own [USERNAME](https://github.com/dfmoralesb/MPE_tutorials/blob/main/README.md)<br>
 
@@ -106,7 +106,7 @@
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/03_captus/01_clean_reads/captus-clean_report.html ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/03_captus/01_clean_reads/captus-clean_report.html ~/Desktop
 
 * Open the `html` file in your internet browser, and you should see something like this<p align="center"><img src="images/captus_clean.png" alt="clean" width="900"></p>
 
@@ -122,7 +122,7 @@
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
- 	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/03_captus/01_clean_reads/02_qc_stats_after/multiqc_report_clean_captus.html .
+ 	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/03_captus/01_clean_reads/02_qc_stats_after/multiqc_report_clean_captus.html .
 
 
 <p align="center"><img src="images/multiqc_captus_clean.png" alt="clean_multiqc" width="900"></p>
@@ -134,7 +134,7 @@
 	
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/multiqc_report_all_samples_clean.html ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/output/all_samples_reports/multiqc_report_all_samples_clean.html ~/Desktop
 
 <p align="center"><img src="images/multiqc_clean_all.png" alt="multiqcleanall" width="900"></p>
 
@@ -200,7 +200,7 @@
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
- 	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/03_captus/02_assemblies/captus-assemble_report.html ~/Desktop
+ 	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/03_captus/02_assemblies/captus-assemble_report.html ~/Desktop
 
 * Open it on your browser, and you should see this
 
@@ -262,7 +262,7 @@
 	
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/captus-assemble_report_all_samples.html ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/output/all_samples_reports/captus-assemble_report_all_samples.html ~/Desktop
 
 <p align="center"><img src="images/captus_assemble_all.png" alt="assembleall" width="900"></p>
 
@@ -338,7 +338,7 @@
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
 
- 	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/03_captus/03_extractions/captus-extract_report.html ~/Desktop
+ 	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/03_captus/03_extractions/captus-extract_report.html ~/Desktop
 
 * Open it on your browser, and you should see this
 
@@ -377,7 +377,7 @@
 	
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/captus-extract_report_all_samples.html ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/output/all_samples_reports/captus-extract_report_all_samples.html ~/Desktop
 
 <p align="center"><img src="images/captus_extraction_all.pne.png" alt="extractall" width="900"></p>
 
@@ -417,7 +417,7 @@
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/04_individual_aln/4471.fna ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/04_individual_aln/4471.fna ~/Desktop
 	
 * Open `AliView` on your laptop and drag the 4471.fna file. You should see the following
 	
@@ -463,7 +463,7 @@
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/04_individual_aln/4471.aln ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/04_individual_aln/4471.aln ~/Desktop
 	
 You should see 
 
@@ -506,7 +506,7 @@ You should see
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/04_individual_aln/4471.aln.clipkit ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/04_individual_aln/4471.aln.clipkit ~/Desktop
 	
 You should see 
 
@@ -566,7 +566,7 @@ You should see
 	
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/03_captus/04_alignments/captus-align_report.html ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/data/03_captus/04_alignments/captus-align_report.html ~/Desktop
 
 <p align="center"><img src="images/captus_align.png" alt="captusalign" width="900"></p>
 
@@ -613,6 +613,6 @@ You should see
 	
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/captus-align_report_all_samples.html ~/Desktop
+	scp -P 22110 $USERNAME@xx.xxx.xxx.xx:/data_tmp/$USERNAME/output/all_samples_reports/captus-align_report_all_samples.html ~/Desktop
 
 <p align="center"><img src="images/captus_aling_all.png" alt="aligntall" width="900"></p>
