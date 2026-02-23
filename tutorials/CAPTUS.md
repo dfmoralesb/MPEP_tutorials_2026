@@ -425,7 +425,7 @@
 
 * Alternately, you can use `Alan` to view the alignment in the terminal
 
-		/data_tmp/$USERNAME/apps/alan/alan -s 10 4471.fna
+		/data_tmp/$USERNAME/apps/alan/alan -s 100 4471.fna
 		
 	To navigate the alignment, use the keyboard arrow keys. The amount by which an alignment is shifted using the arrow keys can be set using the -s or --shift options, followed by a numeric value. The default is 10.
 
