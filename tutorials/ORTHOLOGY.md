@@ -721,7 +721,7 @@
 	
 		((((((((((((((MELI_Aphanamixis_polystachya,MELI_Aglaia_spectabilis)1.000000:0.701014,MELI_Cabralea_canjerana)1.000000:0.722138,MELI_Dysoxylum_alliaceum)1.000000:0.433695,MELI_Chisocheton_longistipitatus)0.999998:0.231027,(((MELI_Turraeanthus_manii,MELI_Heckeldora_staudtii)0.549231:0.052963,MELI_Neoguarea_glomerulata)0.388007:0.016132,MELI_Guarea_pubescens)1.000000:0.425766)1.000000:0.692810,MELI_Vavaea_amicorum)1.000000:0.571772,(MELI_Turraea_virens,MELI_Trichilia_hirta)1.000000:1.911612)0.999956:0.471043,MELI_Munronia_pinnata)1.000000:0.823231,MELI_Quivisianthe_papinae)1.000000:3.095858,(((MELI_Azadirachta_indica,MELI_Melia_azedarach)1.000000:5.147494,MELI_Owenia_reticulata)1.000000:2.112231,MELI_Pterorhachis_zenkeri)1.000000:3.349238)0.999998:0.221347,(((((MELI_Cedrela_saltensis,MELI_Cedrela_montana)0.999797:1.791759,MELI_Toona_ciliata)0.997761:0.980829,MELI_Lovoa_sywnnertonii)1.000000:0.575466,((MELI_Swietenia_mahagoni,MELI_Swietenia_macrophylla)0.999997:1.673976,MELI_Carapa_procera)1.000000:3.621838)1.000000:2.175762,(MELI_Chukrasia_tabularis,MELI_Schmardaea_microphylla)1.000000:1.058412)1.000000:2.659828)1.000000:5.308268,RUTA_Melicope_ternata)1.000000:0.387432,RUTA_Ruta_graveolens),RUTA_Citrus_hystrix);
 	
-	<p align="center"><img src="images/sptreefinal.png" alt="sptreefinal" width=900"></p>
+	<p align="center"><img src="images/sptreefinal1.png" alt="sptreefinal" width=900"></p>
 	
 	#### How does this compare with the 4-locus ASTRAL tree we did in the ASTRAL tutorial
 
