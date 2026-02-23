@@ -20,9 +20,9 @@ This repository contains the instructions and tutorials for the **Molecular Phyl
 
 #### How to login to the workstation
 
-	ssh -p 22110 $USERNAME@
+	ssh -p 22110 $USERNAME@xx.xxx.xxx.xx
 	
-The password will be provided at the beginning of the first practicum. 
+The IP and password will be provided at the beginning of the first tutorial. 
 
 ### Every time you see `$USERNAME` in the example command, you need to replace it with your own
 
@@ -33,7 +33,7 @@ The password will be provided at the beginning of the first practicum.
 		USERNAME=mpemaster
 
 
-#### Requirements (software): The following software has already been installed in each account.
+### Requirements (software): The following software has already been installed in each account.
 
 
 * [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
@@ -70,7 +70,7 @@ The password will be provided at the beginning of the first practicum.
 * [DENDROSCOPE](https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/algorithms-in-bioinformatics/software/dendroscope/)
 
 
-### * Requirements (data)
+### Requirements (data)
 
 All data for analyses and output will be located on the workstation. If not, the tutorial will show you exactly where the data is located.
 
@@ -83,7 +83,7 @@ By Diego
 
 * [NGS data](tutorials/NGS.md)<br>A tutorial on NGS data and target enrichment data
 
-* [Target enrichment data processing](tutorials/CAPTUS.md)<br>A tutorial on how to process target enrichment data
+* [Target enrichment data processing](tutorials/CAPTUS.md)<br>A tutorial on how to process target enrichment data with CAPTUS
 
 * [Maximum-Likelihood Phylogenetic Inference](tutorials/ML.md)<br>A tutorial on phylogenetic inference with maximum likelihood using IQ-TREE
 
