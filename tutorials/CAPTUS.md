@@ -479,6 +479,10 @@ You should see
 
 <p align="center"><img src="images/aligned.png" alt="aligned" width="900"></p>
 
+or 
+
+<p align="center"><img src="images/alan4.png" alt="aligned" width="900"></p>
+
 #### What is the size of the alignment? 
 
 * Now we are going to clean (mask) the alignment based on the percentage of samples per column with `ClipKit`
@@ -522,6 +526,9 @@ You should see
 
 <p align="center"><img src="images/clean.png" alt="clean" width="900"></p>
 
+or 
+
+<p align="center"><img src="images/alan5.png" alt="aligned" width="900"></p>
 
 #### What is the size of the clean alignment?
 
