@@ -56,6 +56,8 @@ The IP and password will be provided at the beginning of the first tutorial.
 
 * [Phyx](https://github.com/FePhyFoFum/phyx)
 
+* [Alan](https://github.com/mpdunne/alan) - a simple in-terminal alignment viewer
+
 
 #### You need to install this on each of your working laptops.
 

@@ -8,7 +8,7 @@
 
 #### How to login to the workstation
 
-	ssh -p 22110 USERNAME@10.153.134.10
+	ssh -p 22110 USERNAME@xx.xxx.xxx.xx
 
 
 ### Every time you see `$USERNAME` in the example command, you need to replace it with your own [USERNAME](https://github.com/dfmoralesb/MPE_tutorials/blob/main/README.md)<br>

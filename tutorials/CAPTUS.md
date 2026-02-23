@@ -423,6 +423,16 @@
 	
 <p align="center"><img src="images/unaligned.png" alt="unaligned" width="900"></p>
 
+* Alternately, you can use `Alan` to view the alignment in the terminal
+
+		/data_tmp/$USERNAME/apps/alan/alan -s 10 4471.fna
+		
+	To navigate the alignment, use the keyboard arrow keys. The amount by which an alignment is shifted using the arrow keys can be set using the -s or --shift options, followed by a numeric value. The default is 10.
+
+<p align="center"><img src="images/alan1.png" alt="unaligned" width="900"></p>
+<p align="center"><img src="images/alan2.png" alt="unaligned" width="900"></p>
+<p align="center"><img src="images/alan3.png" alt="unaligned" width="900"></p>
+
 * Now we are going to align this gene with `MAFFT`
 
 * In the workstation, make sure you are in `/data_tmp/$USERNAME/data/04_individual_aln`
@@ -459,7 +469,7 @@
 	
 * The alignment should be done in a few seconds, and the output file is `4471.aln`
 
-* Copy the alignment to your laptop and open it in `AliView` as we did before
+* Copy the alignment to your laptop and open it in `AliView` as we did before or view it with `Alan`
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
@@ -502,7 +512,7 @@ You should see
 	
 * The output file will be called `4471.aln.clipkit`
 
-* Copy the alignment to your laptop and open it in `AliView` as we did before
+* Copy the alignment to your laptop and open it in `AliView` as we did before or view it with `Alan`
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
