@@ -960,7 +960,7 @@
 	
 	<p align="center"><img src="images/sptreefinal_wastral.png" alt="sptreefinal_wastral" width=900"></p>
 	
-	#### How does this compare with the "normal" ASTRAL tree we did above <a name="sptree"></a>
+	#### How does this compare with the "normal" ASTRAL tree we did above [Species tree inference](#sptree)
 
 
 	
