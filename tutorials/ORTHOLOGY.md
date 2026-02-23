@@ -7,6 +7,7 @@
 * [Orthology inference](#ortho)
 * [Species tree inference](#sptree)
 * [Species tree inference from homologs](homolog)
+* [Other species tree inference options](options)
 
 
 
@@ -930,11 +931,36 @@
 <p align="center"><img src="images/astralpro.png" alt="astralpro" width=900"></p>
 
 	
-	 
+	<a name="options"></a>
+## Other options for species tree inference
+
+* There is another version of ASTRAL, Weighted ASTRAL. Weighted ASTRAL introduce threshold-free weighting schemes for the quartet-based species tree inference. By reducing the impact of quartets with low support or long terminal branches (or both), weighting provides stronger theoretical guarantees and better empirical performance than the unweighted ("normal") ASTRAL.
+
+ 
+	Now, let's infer and Weighted ASTRAL (w-ASTRAL)
+	
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/07_astral
+							
+	In this case we are going to use the original MO gene trees without collapsing the ones as we did for the original ASTRAL inference
+		 
+ 		meliaceae_334_MO_orthologs.tre
+ 		
+		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral-hybrid -i meliaceae_334_MO_orthologs.tre -o meliaceae_334_MO_orthologs.w-ASTRAL.tre 2> >(tee -a w-ASTRAL.log >&2)
 		
+	This should take a few seconds, and the output file will be called `meliaceae_334_MO_orthologs.w-ASTRAL.tre`
+	
+	Now you can open the file, plot, root, sort, and show the node label (LPP) in Figtree, and it should have the following.
 	
 
+		cat meliaceae_334_MO_orthologs.w-ASTRAL.tre
+			
+	It should look like this:
 	
-		
+		((((((((((((((MELI_Aphanamixis_polystachya,MELI_Aglaia_spectabilis)1.000000:0.799362,MELI_Cabralea_canjerana)1.000000:0.913708,MELI_Dysoxylum_alliaceum)1.000000:0.577788,MELI_Chisocheton_longistipitatus)1.000000:0.338162,(MELI_Turraeanthus_manii,((MELI_Heckeldora_staudtii,MELI_Neoguarea_glomerulata)0.434862:0.013034,MELI_Guarea_pubescens)0.837272:0.084662)1.000000:0.427064)1.000000:0.960090,MELI_Vavaea_amicorum)1.000000:0.656091,(MELI_Turraea_virens,MELI_Trichilia_hirta)1.000000:2.249369)1.000000:0.526875,MELI_Munronia_pinnata)1.000000:0.911573,MELI_Quivisianthe_papinae)1.000000:3.497292,(((MELI_Azadirachta_indica,MELI_Melia_azedarach)1.000000:5.821343,MELI_Owenia_reticulata)1.000000:2.303675,MELI_Pterorhachis_zenkeri)1.000000:3.590993)1.000000:0.299729,(((((MELI_Cedrela_saltensis,MELI_Cedrela_montana)1.000000:2.386993,MELI_Toona_ciliata)0.999998:1.327464,MELI_Lovoa_sywnnertonii)1.000000:0.647158,((MELI_Swietenia_mahagoni,MELI_Swietenia_macrophylla)1.000000:2.083071,MELI_Carapa_procera)1.000000:4.009018)1.000000:2.808757,(MELI_Chukrasia_tabularis,MELI_Schmardaea_microphylla)1.000000:1.112930)1.000000:3.062623)1.000000:5.917697,RUTA_Melicope_ternata)1.000000:0.413357,RUTA_Ruta_graveolens),RUTA_Citrus_hystrix);
+	
+	<p align="center"><img src="images/sptreefinal_wastral.png" alt="sptreefinal_wastral" width=900"></p>
+	
+	#### How does this compare with the "normal" ASTRAL tree we did above
+
 
 	
