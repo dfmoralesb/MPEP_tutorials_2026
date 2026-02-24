@@ -401,12 +401,26 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 		**IH-i**  = how strong the asymmetric introgression/hybridization signal is, scaled 0–50%
 
 		**IH-e** = the excess discordance attributable to that asymmetry (q2 ≠ q3)
+		
+		#### What patterns do you see? 
 
+<a name="phylonet"></a>
+## Inferring phylogenetic networks with Phylonet
+
+* We are going to infer phylogenetic networks with Phylonet using ortholog gene trees as input, but we need to keep in mind a few practical considerations:
+
+	* Inferring phylogenetic networks is very computational intensive and is restricted to a maximum number of samples (10 - 20). The phylogenetic network space is much larger than that of trees on the same number of taxa.
 	
+	* Runtime grows explosively with the number of taxa and the number of reticulations you allow, is better to restrict to a small number of reticulations. Start with h = 0, 1, 2 and increase only if you have strong evidence and the fit improves meaningfully.
 	
+	* Usually we need to reduced our sampling to test specific hypothesis of hybridization based on previous knowledge (e.g., morphology) or phylogenetic patterns (e.g. gene tree discordance). So serach for networks focused on clades (or representative taxa), not “whole-tree” datasets with dozens+ taxa.
 	
+	* PhyloNet expects rooted gene trees. Wrong roots can look like introgression
 	
 
+	All this being said, in this example we will focus for potential reticulations on the backbone of the family, based on our conflict analyses.
 	
+	
+	<p align="center"><img src="images/missing.png" alt="prop" width="900"></p>
 	
 	
