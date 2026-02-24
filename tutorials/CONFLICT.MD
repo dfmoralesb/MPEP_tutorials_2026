@@ -388,7 +388,7 @@
 	
 	You should see this
 	
-	<p align="center"><img src="images/open2.png" alt="open2" width="900"></p>
+	<p align="center"><img src="images/open2a.png" alt="open2" width="900"></p>
 	
 	Now you are going to replace in the first line of the script `/data_tmp/mpemaster/data/07_phylogenomic_analyses/12_phyparts` for `mpemaster` for your own USERNAME
 
