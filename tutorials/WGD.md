@@ -295,10 +295,10 @@
 Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and uses the key expectation that ILS produces symmetric discordance (q2 ≈ q3) whereas introgression/hybridization produces asymmetric discordance (q2 ≠ q3) to partition gene-tree conflict into ILS and IH indices.
 	
 
-* The input for Phytop is the ASTRAL species trees with nodes annotated with the quartet frequencies. This is done running ASTRAL as we did before and just adding the flag `-u 2`. This flags output detail support values that includes the quartet frequencies (i.e., q1, q2, q3) at every node.
+* The input for Phytop is the ASTRAL species trees with nodes annotated with the quartet frequencies. This is by done running ASTRAL as we did before and just adding the flag `-u 2`. This flags output detail support values that includes the quartet frequencies (i.e., q1, q2, q3) at every node.
 	
 
-	Let's create a new directory were run ASTRAL and Phytop
+	Let's create a new directory where will re-run ASTRAL and Phytop
 
 		cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/
 
@@ -327,11 +327,20 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 
 	<p align="center"><img src="images/astralu2.png" alt="astralu2" width="900"></p>
 
+
+	How to read those labels/annotations:
+
+	* q1 = normalized quartet support for the species-tree resolution of that branch
+
+	* q2, q3 = quartet support for the two alternative resolutions
+
+	* pp1 = local posterior probability for the species-tree resolution
+
+	* pp2, pp3 = local posterior probabilities for the two alternatives (and pp1+pp2+pp3 ≈ 1)
 	
 	And now let's run Phytop
 
 		conda activate phytop
-
 
 		QT_QPA_PLATFORM=offscreen DISPLAY= MPLBACKEND=Agg phytop meliaceae_334_MO_orthologs.ASTRAL.u2.tre
 
