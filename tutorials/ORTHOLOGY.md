@@ -557,7 +557,7 @@
 		
 	You should see `ortho_stats.txt` and `taxon_stats.txt`
 	
-	Let's open RStudio. In your browser address bar, type `xx.xxx.xxx.xx:8787` When you are prompted for the login information, use the same USERNAME and password you have been using for login into the workstation
+	Let's open RStudio. In your browser address bar, type `10.153.134.10:8787` When you are prompted for the login information, use the same USERNAME and password you have been using for login into the workstation
 	
 	
 	<p align="center"><img src="images/R.png" alt="R" width="400"></p>
