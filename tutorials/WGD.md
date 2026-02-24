@@ -375,12 +375,12 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	The file should look like this:
 	
-		<p align="center"><img src="images/phytop1.png" alt="astralu2" width="900"></p>
+	<p align="center"><img src="images/phytop1.png" alt="astralu2" width="900"></p>
 		
 	You can zoom-in to see the details for each node (e.g, the MRCA of Meliaceae and the next nodes)
 	
 	
-		<p align="left"><img src="images/phytop2.png" alt="astralu2" width="900"></p> <p align="right"><img src="images/phytop3.png" alt="astralu2" width="900"></p>
+	<p align="left"><img src="images/phytop2.png" alt="astralu2" width="900"></p> <p align="right"><img src="images/phytop3.png" alt="astralu2" width="900"></p>
 		
 	What can you say about those values. Remember:
 	
