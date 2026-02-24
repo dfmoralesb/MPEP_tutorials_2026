@@ -295,45 +295,45 @@
 Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and uses the key expectation that ILS produces symmetric discordance (q2 ≈ q3) whereas introgression/hybridization produces asymmetric discordance (q2 ≠ q3) to partition gene-tree conflict into ILS and IH indices.
 	
 
-The input for Phytop is the ASTRAL species trees with nodes annotated with the quartet frequencies. This is done running ASTRAL as we did before and just adding the flag `-u 2`. This flags output detail support values that includes the quartet frequencies (i.e., q1, q2, q3) at every node.
+* The input for Phytop is the ASTRAL species trees with nodes annotated with the quartet frequencies. This is done running ASTRAL as we did before and just adding the flag `-u 2`. This flags output detail support values that includes the quartet frequencies (i.e., q1, q2, q3) at every node.
 	
 
-Let's create a new directory were run ASTRAL and Phytop
+	Let's create a new directory were run ASTRAL and Phytop
 
-	cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/
+		cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/
 
-	mkdir 14_phytop
+		mkdir 14_phytop
 
-	cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/14_phytop
+		cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/14_phytop
 	
-We will copy the same input that we used for ASTRAL yesterday
+	We will copy the same input that we used for ASTRAL yesterday
 
-	cp /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_astral/meliaceae_334_MO_orthologs.col_20.tre .
+		cp /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_astral/meliaceae_334_MO_orthologs.col_20.tre .
 	
-Now let's run ASTRAL with the flag `-u 2`
+	Now let's run ASTRAL with the flag `-u 2`
 
-	/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral -i meliaceae_334_MO_orthologs.col_70.tre -o meliaceae_334_MO_orthologs.ASTRAL.u2.tre -u 2
+		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral -i meliaceae_334_MO_orthologs.col_70.tre -o meliaceae_334_MO_orthologs.ASTRAL.u2.tre -u 2
 	
-Open the output file to see the difference
+	Open the output file to see the difference
 
-	cat meliaceae_334_MO_orthologs.ASTRAL.u2.tre
+		cat meliaceae_334_MO_orthologs.ASTRAL.u2.tre
 	
-You should see:
+	You should see:
 
-	((((((((((((((MELI_Aphanamixis_polystachya,MELI_Aglaia_spectabilis)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=139.936111;f2=25.716667;f3=31.347222;q1=0.710336;q2=0.130541;q3=0.159123]':0.821258,MELI_Cabralea_canjerana)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=129.096712;f2=19.475764;f3=22.427523;q1=0.754952;q2=0.113893;q3=0.131155]':0.983081,MELI_Dysoxylum_alliaceum)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=89.754586;f2=29.508209;f3=24.737204;q1=0.623296;q2=0.204918;q3=0.171786]':0.559483,MELI_Chisocheton_longistipitatus)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=89.366163;f2=46.510499;f3=33.123338;q1=0.528794;q2=0.275210;q3=0.195996]':0.340415,(((MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens)'[pp1=0.395510;pp2=0.245626;pp3=0.358863;f1=25.646096;f2=23.163280;f3=25.190624;q1=0.346569;q2=0.313017;q3=0.340414]':0.013006,MELI_Heckeldora_staudtii)'[pp1=0.809537;pp2=0.040101;pp3=0.150363;f1=30.163907;f2=16.003336;f3=24.832757;q1=0.424844;q2=0.225399;q3=0.349757]':0.137442,MELI_Turraeanthus_manii)'[pp1=0.999824;pp2=0.000093;pp3=0.000083;f1=45.777774;f2=20.223551;f3=18.998675;q1=0.538562;q2=0.237924;q3=0.223514]':0.354462)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=110.819746;f2=26.330151;f3=18.850103;q1=0.710383;q2=0.168783;q3=0.120834]':0.818228,MELI_Vavaea_amicorum)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=93.137271;f2=16.196062;f3=28.666667;q1=0.674908;q2=0.117363;q3=0.207729]':0.703356,(MELI_Turraea_virens,MELI_Trichilia_hirta)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=134.514085;f2=1.309028;f3=7.176888;q1=0.940658;q2=0.009154;q3=0.050188]':2.314540)'[pp1=0.999929;pp2=0.000035;pp3=0.000036;f1=31.362628;f2=9.593254;f3=10.044118;q1=0.614953;q2=0.188103;q3=0.196943]':0.518675,MELI_Munronia_pinnata)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=52.300000;f2=13.623077;f3=2.076923;q1=0.769118;q2=0.200339;q3=0.030543]':1.013233,MELI_Quivisianthe_papinae)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=281.038180;f2=3.174333;f3=5.787487;q1=0.969097;q2=0.010946;q3=0.019957]':2.969098,(((MELI_Azadirachta_indica,MELI_Melia_azedarach)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=257.000000;f2=0.000000;f3=-0.000000;q1=1.000000;q2=0.000000;q3=-0.000000]':5.147494,MELI_Owenia_reticulata)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=109.000000;f2=0.000000;f3=6.000000;q1=0.947826;q2=0.000000;q3=0.052174]':2.402215,MELI_Pterorhachis_zenkeri)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=122.074074;f2=1.037037;f3=0.888889;q1=0.984468;q2=0.008363;q3=0.007168]':3.349238)'[pp1=0.999999;pp2=0.000000;pp3=0.000001;f1=107.131313;f2=48.503608;f3=58.365079;q1=0.500614;q2=0.226652;q3=0.272734]':0.284258,(((((MELI_Cedrela_saltensis,MELI_Cedrela_montana)'[pp1=0.998174;pp2=0.000913;pp3=0.000913;f1=6.000000;f2=0.000000;f3=-0.000000;q1=1.000000;q2=0.000000;q3=-0.000000]':1.540445,MELI_Toona_ciliata)'[pp1=0.999932;pp2=0.000034;pp3=0.000034;f1=9.000000;f2=0.000000;f3=-0.000000;q1=1.000000;q2=0.000000;q3=-0.000000]':1.897120,MELI_Lovoa_sywnnertonii)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=121.611111;f2=26.888889;f3=40.500000;q1=0.643445;q2=0.142269;q3=0.214286]':0.616349,((MELI_Swietenia_mahagoni,MELI_Swietenia_macrophylla)'[pp1=0.999997;pp2=0.000001;pp3=0.000002;f1=14.000000;f2=0.000000;f3=1.000000;q1=0.933333;q2=0.000000;q3=0.066667]':1.673976,MELI_Carapa_procera)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=165.952381;f2=0.547619;f3=1.500000;q1=0.987812;q2=0.003260;q3=0.008929]':3.610073)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=229.650730;f2=4.315937;f3=3.033333;q1=0.968990;q2=0.018211;q3=0.012799]':2.944631,(MELI_Chukrasia_tabularis,MELI_Schmardaea_microphylla)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=158.815132;f2=22.237500;f3=15.947368;q1=0.806168;q2=0.112881;q3=0.080951]':1.214511)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=259.997883;f2=1.399110;f3=1.603006;q1=0.988585;q2=0.005320;q3=0.006095]':3.783661)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=299.000000;f2=0.000000;f3=0.000000;q1=1.000000;q2=0.000000;q3=0.000000]':5.298317,RUTA_Melicope_ternata)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=144.000000;f2=64.000000;f3=57.000000;q1=0.543396;q2=0.241509;q3=0.215094]':0.374010,RUTA_Ruta_graveolens),RUTA_Citrus_hystrix);
+		((((((((((((((MELI_Aphanamixis_polystachya,MELI_Aglaia_spectabilis)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=139.936111;f2=25.716667;f3=31.347222;q1=0.710336;q2=0.130541;q3=0.159123]':0.821258,MELI_Cabralea_canjerana)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=129.096712;f2=19.475764;f3=22.427523;q1=0.754952;q2=0.113893;q3=0.131155]':0.983081,MELI_Dysoxylum_alliaceum)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=89.754586;f2=29.508209;f3=24.737204;q1=0.623296;q2=0.204918;q3=0.171786]':0.559483,MELI_Chisocheton_longistipitatus)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=89.366163;f2=46.510499;f3=33.123338;q1=0.528794;q2=0.275210;q3=0.195996]':0.340415,(((MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens)'[pp1=0.395510;pp2=0.245626;pp3=0.358863;f1=25.646096;f2=23.163280;f3=25.190624;q1=0.346569;q2=0.313017;q3=0.340414]':0.013006,MELI_Heckeldora_staudtii)'[pp1=0.809537;pp2=0.040101;pp3=0.150363;f1=30.163907;f2=16.003336;f3=24.832757;q1=0.424844;q2=0.225399;q3=0.349757]':0.137442,MELI_Turraeanthus_manii)'[pp1=0.999824;pp2=0.000093;pp3=0.000083;f1=45.777774;f2=20.223551;f3=18.998675;q1=0.538562;q2=0.237924;q3=0.223514]':0.354462)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=110.819746;f2=26.330151;f3=18.850103;q1=0.710383;q2=0.168783;q3=0.120834]':0.818228,MELI_Vavaea_amicorum)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=93.137271;f2=16.196062;f3=28.666667;q1=0.674908;q2=0.117363;q3=0.207729]':0.703356,(MELI_Turraea_virens,MELI_Trichilia_hirta)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=134.514085;f2=1.309028;f3=7.176888;q1=0.940658;q2=0.009154;q3=0.050188]':2.314540)'[pp1=0.999929;pp2=0.000035;pp3=0.000036;f1=31.362628;f2=9.593254;f3=10.044118;q1=0.614953;q2=0.188103;q3=0.196943]':0.518675,MELI_Munronia_pinnata)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=52.300000;f2=13.623077;f3=2.076923;q1=0.769118;q2=0.200339;q3=0.030543]':1.013233,MELI_Quivisianthe_papinae)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=281.038180;f2=3.174333;f3=5.787487;q1=0.969097;q2=0.010946;q3=0.019957]':2.969098,(((MELI_Azadirachta_indica,MELI_Melia_azedarach)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=257.000000;f2=0.000000;f3=-0.000000;q1=1.000000;q2=0.000000;q3=-0.000000]':5.147494,MELI_Owenia_reticulata)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=109.000000;f2=0.000000;f3=6.000000;q1=0.947826;q2=0.000000;q3=0.052174]':2.402215,MELI_Pterorhachis_zenkeri)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=122.074074;f2=1.037037;f3=0.888889;q1=0.984468;q2=0.008363;q3=0.007168]':3.349238)'[pp1=0.999999;pp2=0.000000;pp3=0.000001;f1=107.131313;f2=48.503608;f3=58.365079;q1=0.500614;q2=0.226652;q3=0.272734]':0.284258,(((((MELI_Cedrela_saltensis,MELI_Cedrela_montana)'[pp1=0.998174;pp2=0.000913;pp3=0.000913;f1=6.000000;f2=0.000000;f3=-0.000000;q1=1.000000;q2=0.000000;q3=-0.000000]':1.540445,MELI_Toona_ciliata)'[pp1=0.999932;pp2=0.000034;pp3=0.000034;f1=9.000000;f2=0.000000;f3=-0.000000;q1=1.000000;q2=0.000000;q3=-0.000000]':1.897120,MELI_Lovoa_sywnnertonii)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=121.611111;f2=26.888889;f3=40.500000;q1=0.643445;q2=0.142269;q3=0.214286]':0.616349,((MELI_Swietenia_mahagoni,MELI_Swietenia_macrophylla)'[pp1=0.999997;pp2=0.000001;pp3=0.000002;f1=14.000000;f2=0.000000;f3=1.000000;q1=0.933333;q2=0.000000;q3=0.066667]':1.673976,MELI_Carapa_procera)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=165.952381;f2=0.547619;f3=1.500000;q1=0.987812;q2=0.003260;q3=0.008929]':3.610073)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=229.650730;f2=4.315937;f3=3.033333;q1=0.968990;q2=0.018211;q3=0.012799]':2.944631,(MELI_Chukrasia_tabularis,MELI_Schmardaea_microphylla)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=158.815132;f2=22.237500;f3=15.947368;q1=0.806168;q2=0.112881;q3=0.080951]':1.214511)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=259.997883;f2=1.399110;f3=1.603006;q1=0.988585;q2=0.005320;q3=0.006095]':3.783661)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=299.000000;f2=0.000000;f3=0.000000;q1=1.000000;q2=0.000000;q3=0.000000]':5.298317,RUTA_Melicope_ternata)'[pp1=1.000000;pp2=0.000000;pp3=0.000000;f1=144.000000;f2=64.000000;f3=57.000000;q1=0.543396;q2=0.241509;q3=0.215094]':0.374010,RUTA_Ruta_graveolens),RUTA_Citrus_hystrix);
 	
-Now, you can open the file, plot, root, sort, and show the node labels in Figtree, and you should have the following
+	Now, you can open the file, plot, root, sort, and show the node labels in Figtree, and you should have the following
 
 
-<p align="center"><img src="images/astralu2.png" alt="astralu2" width="600"></p>
+	<p align="center"><img src="images/astralu2.png" alt="astralu2" width="600"></p>
 
 	
-And now let's run Phytop
+	And now let's run Phytop
 
-	conda activate phytop
+		conda activate phytop
 
 
-	QT_QPA_PLATFORM=offscreen DISPLAY= MPLBACKEND=Agg phytop meliaceae_334_MO_orthologs.ASTRAL.u2.tre
+		QT_QPA_PLATFORM=offscreen DISPLAY= MPLBACKEND=Agg phytop meliaceae_334_MO_orthologs.ASTRAL.u2.tre
 
 	
 
