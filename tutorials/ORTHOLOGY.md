@@ -931,27 +931,27 @@
 <p align="center"><img src="images/astralpro.png" alt="astralpro" width=900"></p>
 
 	
-## Other options for species tree inference
+## Other ASTRAL option for species tree estimation
 
-* There is another version of ASTRAL, Weighted ASTRAL. Weighted ASTRAL introduce threshold-free weighting schemes for the quartet-based species tree inference. By reducing the impact of quartets with low support or long terminal branches (or both), weighting provides stronger theoretical guarantees and better empirical performance than the unweighted ("normal") ASTRAL.
+* There is another version of ASTRAL, Weighted ASTRAL (wASTRAL-h). wASTRAL-h introduce threshold-free weighting schemes for the quartet-based species tree inference. By reducing the impact of quartets with low support or long terminal branches (hybrid when both), weighting provides stronger theoretical guarantees and better empirical performance than the unweighted ("normal") ASTRAL.
 
  
-	Now, let's infer and Weighted ASTRAL (w-ASTRAL)
+	Now, let's infer and Weighted ASTRAL (wASTRAL-h)
 	
 		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/07_astral
 							
-	In this case we are going to use the original MO gene trees without collapsing the ones as we did for the original ASTRAL inference
+	In this case we are going to use the original MO gene trees without collapsing the nodes as we did for the original ASTRAL inference in [Species tree inference](#sptree)
 		 
  		meliaceae_334_MO_orthologs.tre
  		
-		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral-hybrid -i meliaceae_334_MO_orthologs.tre -o meliaceae_334_MO_orthologs.w-ASTRAL.tre 2> >(tee -a w-ASTRAL.log >&2)
+		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral-hybrid -i meliaceae_334_MO_orthologs.tre -o meliaceae_334_MO_orthologs.wASTRAL-h.tre 2> >(tee -a wASTRAL-h.log >&2)
 		
-	This should take a few seconds, and the output file will be called `meliaceae_334_MO_orthologs.w-ASTRAL.tre`
+	This should take a few seconds, and the output file will be called `meliaceae_334_MO_orthologs.wASTRAL-h.tre`
 	
 	Now you can open the file, plot, root, sort, and show the node label (LPP) in Figtree, and it should have the following.
 	
 
-		cat meliaceae_334_MO_orthologs.w-ASTRAL.tre
+		cat meliaceae_334_MO_orthologs.wASTRAL-h.tre
 			
 	It should look like this:
 	
@@ -959,7 +959,7 @@
 	
 	<p align="center"><img src="images/sptreefinal_wastral.png" alt="sptreefinal_wastral" width=900"></p>
 	
-	#### How does this compare with the "normal" ASTRAL tree we did above [Species tree inference](#sptree)
+	#### How does this compare with the "normal" ASTRAL tree we did above in [Species tree inference](#sptree)
 
 
 	
