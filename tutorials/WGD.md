@@ -325,7 +325,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	Now, you can open the file, plot, root, sort, and show the node labels in Figtree, and you should have the following
 
 
-	<p align="center"><img src="images/astralu2.png" alt="astralu2" width="600"></p>
+	<p align="center"><img src="images/astralu2.png" alt="astralu2" width="900"></p>
 
 	
 	And now let's run Phytop
