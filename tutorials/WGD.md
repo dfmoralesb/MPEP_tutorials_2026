@@ -330,13 +330,18 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 
 	How to read those labels/annotations:
 
-	* q1 = normalized quartet support for the species-tree resolution of that branch
+	* q1 = normalized quartet support for the species-tree
 
-	* q2, q3 = quartet support for the two alternative resolutions
+	* q2, q3 = quartet support for the two alternative topologies
 
-	* pp1 = local posterior probability for the species-tree resolution
+	* pp1 = local posterior probability for the species-tree 
 
 	* pp2, pp3 = local posterior probabilities for the two alternatives (and pp1+pp2+pp3 ≈ 1)
+	
+	* f1 = total number of induced quartets across all gene trees that support the species-tree
+
+	* f2, f3 = total quartets supporting for the two alternative topologies
+
 	
 	And now let's run Phytop
 
