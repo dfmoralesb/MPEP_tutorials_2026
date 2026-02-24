@@ -312,7 +312,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	Now let's run ASTRAL with the flag `-u 2`
 
-		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral -i meliaceae_334_MO_orthologs.col_70.tre -o meliaceae_334_MO_orthologs.ASTRAL.u2.tre -u 2
+		/data_tmp/$USERNAME/apps/ASTER-Linux_old/bin/astral -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.ASTRAL.u2.tre -u 2
 	
 	Open the output file to see the difference
 
@@ -348,7 +348,41 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 		conda activate phytop
 
 		QT_QPA_PLATFORM=offscreen DISPLAY= MPLBACKEND=Agg phytop meliaceae_334_MO_orthologs.ASTRAL.u2.tre
+		
+	You should start seeing:
+	
+	
+		26-02-24 15:42:25 [INFO] No DRMAA (see https://github.com/pygridtools/drmaa-python), Switching to local mode.
+		26-02-24 15:42:26 [INFO] Command: /home/mpemaster/miniconda3/envs/phytop/bin/phytop meliaceae_334_MO_orthologs.ASTRAL.u2.tre
+		26-02-24 15:42:26 [INFO] Version: 0.3
+		26-02-24 15:42:26 [INFO] Arguments: {'astral': 'meliaceae_334_MO_orthologs.ASTRAL.u2.tre', 'alter': None, 'genetrees': None, 'align': False, 'cp': False, 'branch_size': 48, 'leaf_size': 60, 'sort': False, 'notext': False, 'figsize': 3, 'fontsize': 13, 'figfmt': 'png', 'colors': None, 'polytomy_test': False, 'pie': False, 'pie_size': 30, 'add_bl': False, 'test_clades': None, 'astral_bin': 'astral-pro', 'outgroup': None, 'clades': None, 'collapsed': None, 'onshow': None, 'noshow': None, 'subset': None, 'prefix': None, 'tmpdir': 'tmp'}
+		26-02-24 15:42:26 [INFO] Clades info file: `tmp/meliaceae_334_MO_orthologs.ASTRAL.u2.tre.nodes.tsv`, which can be renamed and edited as input of `-clades`
+		...
+		...
+		...
+		...
+		26-02-24 15:42:29 [INFO] Labeled tree file: `tmp/meliaceae_334_MO_orthologs.ASTRAL.u2.tre.label.tree`
+		26-02-24 15:42:29 [INFO] Information file: `meliaceae_334_MO_orthologs.ASTRAL.u2.tre.info.tsv`
+		26-02-24 15:42:29 [INFO] Final plot: `meliaceae_334_MO_orthologs.ASTRAL.u2.tre.pdf`
+		
+	Phytop should be done in few seconds!
+	
+	The main output of Phytop is the `meliaceae_334_MO_orthologs.ASTRAL.u2.tre.pdf` file. Let's download it to our local computers
+	
+	#### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
+	scp -P 22110 USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/07_phylogenomic_analyses/14_phytop/meliaceae_334_MO_orthologs.ASTRAL.u2.tre.pdf .
+	
+	The file should look like this:
+	
+		<p align="center"><img src="images/phytop1.png" alt="astralu2" width="900"></p>
+		
+	You can zoom-in to see the details for each node (e.g, the MRCA of Meliaceae and the next nodes)
+
+	
+	
+	
+	
 	
 
 	
