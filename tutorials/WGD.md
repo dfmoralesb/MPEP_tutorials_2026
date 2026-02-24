@@ -380,7 +380,8 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	You can zoom-in to see the details for each node (e.g, the MRCA of Meliaceae and the next nodes)
 	
 	
-	<p align="left"><img src="images/phytop2.png" alt="astralu2" width="900"></p> <p align="right"><img src="images/phytop3.png" alt="astralu2" width="900"></p>
+	<p align="center"><img src="images/phytop2.png" alt="astralu2" width="300"></p> 
+	<p align="center"><img src="images/phytop3.png" alt="astralu2" width="300"></p>
 		
 	What can you say about those values. Remember:
 	
@@ -393,13 +394,13 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	* ILS-e and IH-e represent the proportion of gene tree topological incongruence that can be explained by ILS and IH, respectively 
 
 
-	**ILS-i** = how strong ILS is on that branch, scaled 0–100% 
+		**ILS-i** = how strong ILS is on that branch, scaled 0–100% 
 
-	**ILS-e** = how much of the observed discordant gene trees (q2 ≈ q3) can be attributed to ILS
+		**ILS-e** = how much of the observed discordant gene trees (q2 ≈ q3) can be attributed to ILS
 
-	**IH-i**  = how strong the asymmetric introgression/hybridization signal is, scaled 0–50%
+		**IH-i**  = how strong the asymmetric introgression/hybridization signal is, scaled 0–50%
 
-	**IH-e** = the excess discordance attributable to that asymmetry (q2 ≠ q3)
+		**IH-e** = the excess discordance attributable to that asymmetry (q2 ≠ q3)
 
 	
 	
