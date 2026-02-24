@@ -423,4 +423,45 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	<p align="center"><img src="images/missing.png" alt="prop" width="900"></p>
 	
+	<p align="center"><img src="images/qs.png" alt="prop" width="900"></p>
+	
+	<p align="center"><img src="images/cf.png" alt="prop" width="900"></p>
+	
+	Based on the discordance patters, we are going to test if there is potential hybridization among three clades: Cedreloideae, Meliaeae, and remaining of Melioideae.
+	
+	Given that this clades have high support, we are going to choose *two* samples from each clade and *one* outgroup to to root all gene trees. We will do based on the number of orthologs per sample. We well choose the taxa for each clade and outgroup that have the highest number of orthologs
+	
+	  	taxonID                           num_ortho  %ortho_out_of_total_316
+  		*MELI_Aglaia_spectabilis           298        0.943037974684*
+  		MELI_Aphanamixis_polystachya      258        0.816455696203
+  		*MELI_Azadirachta_indica           304        0.962025316456*
+  		MELI_Cabralea_canjerana           283        0.895569620253
+  		MELI_Carapa_procera               170        0.537974683544
+  		MELI_Cedrela_montana              12         0.0379746835443
+  		MELI_Cedrela_saltensis            10         0.0316455696203
+  		MELI_Chisocheton_longistipitatus  290        0.917721518987
+  		MELI_Chukrasia_tabularis          245        0.775316455696
+  		MELI_Dysoxylum_alliaceum          232        0.73417721519
+  		MELI_Guarea_pubescens             257        0.813291139241
+  		MELI_Heckeldora_staudtii          269        0.851265822785
+  		MELI_Lovoa_sywnnertonii           249        0.787974683544
+  		MELI_Melia_azedarach              252        0.79746835443
+  		MELI_Munronia_pinnata             83         0.262658227848
+  		MELI_Neoguarea_glomerulata        168        0.53164556962
+  		*MELI_Owenia_reticulata            302        0.955696202532*
+  		MELI_Pterorhachis_zenkeri         122        0.386075949367
+  		*MELI_Quivisianthe_papinae         293        0.927215189873*
+  		MELI_Schmardaea_microphylla       256        0.810126582278
+  		*MELI_Swietenia_macrophylla        271        0.857594936709*
+  		MELI_Swietenia_mahagoni           26         0.0822784810127
+  		*MELI_Toona_ciliata                286        0.905063291139*
+  		MELI_Trichilia_hirta              165        0.522151898734
+  		MELI_Turraea_virens               217        0.686708860759
+  		MELI_Turraeanthus_manii           128        0.405063291139
+  		MELI_Vavaea_amicorum              219        0.693037974684
+  		*RUTA_Citrus_hystrix               311        0.98417721519*
+  		RUTA_Melicope_ternata             308        0.974683544304
+  		RUTA_Ruta_graveolens              312        0.987341772152
+	
+	
 	
