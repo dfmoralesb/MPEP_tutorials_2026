@@ -832,14 +832,41 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	So we have that <em>L</em> is the log likelihood score, <em>k</em> is the number of parameters, and <em>n</em> is the number of gene trees used to estimated the likelihood.
 score.
 
-	We can use the following formulas to calculate AIC, AICc, and BIC
-
-	**The lower the values of these criteria, the better the fit of the model to the data.**
-		
+	We can use the following formulas to calculate AIC, AICc, and BIC		
 
 	<p align="center"><img src="images/AIC.png" alt="dendro1" width="300"></p>
 
 	<p align="center"><img src="images/AICc.png" alt="dendro1" width="300"></p>
 
 	<p align="center"><img src="images/BIC.png" alt="dendro1" width="300"></p>
+	
+	The difference between the BIC and the AIC is the greater penalty imposed for the number of parameters by the former than the latter.
 
+	**The lower the values of these criteria, the better the fit of the model to the data.**
+	
+	To assess the strength of evidence for the each candidate model we can use the delta values. Which is the difference between the candidate (alternative) models and the best model.
+	
+	In the delta AIC and AICc rule of thumb:
+	
+	* Less than 2, this indicates there is substantial evidence to support the candidate model (i.e., the candidate model is almost as good as the best model).
+	* Between 4 and 7, this indicates that the candidate model has considerably less support.
+	* Greater than 10, this indicates that there is essentially no support for the candidate model (i.e., it is unlikely to be the best model).
+
+
+	For delta BIC, the rule of thumb is:
+	
+	* Less than 2, it is not worth more than a bare mention.
+	* Between 2 and 6, the evidence against the candidate model is positive.
+	* Between 6 and 10, the evidence against the candidate model is strong.
+	* Greater than 10, the evidence is very strong.
+	
+	I have provided and spreadsheet with the calculation seen below in Moddle in today's foldel
+	
+	
+		<p align="center"><img src="images/modelselection.png" alt="dendro1" width="900"></p>
+		
+	**How do you interpret this result and put them in context of the pattern of WGD and discordance we have identified**
+
+	
+	
+	
