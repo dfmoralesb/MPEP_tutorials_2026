@@ -446,12 +446,17 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	We will put this names in a file called `taxa_to_keep.txt`
 	
+	First let's create the directories where we will be working
+	
 		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
 	
 		mkdir -p 15_phylonet/00_reduced_fasta
 
 		cd 15_phylonet
 		
+	Write the text file with the samples to keep
+	
+
 		printf "%s\n" \
   		"RUTA_Citrus_hystrix" \
   		"MELI_Quivisianthe_papinae" \
