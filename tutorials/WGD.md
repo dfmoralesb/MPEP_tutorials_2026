@@ -863,7 +863,7 @@ score.
 	I have provided and spreadsheet with the calculation seen below in Moddle in today's foldel
 	
 	
-		<p align="center"><img src="images/modelselection.png" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/modelselection.png" alt="dendro1" width="900"></p>
 		
 	**How do you interpret this result and put them in context of the pattern of WGD and discordance we have identified**
 
