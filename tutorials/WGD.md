@@ -466,15 +466,66 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
   		"MELI_Swietenia_macrophylla" \
   		"MELI_Toona_ciliata" \
   		> taxa_to_keep.txt
+  		
+  	Open the file to verify
+  	
+  		cat taxa_to_keep.txt
+  		
+  	It should look like this:
+  	
+  		RUTA_Citrus_hystrix
+		MELI_Quivisianthe_papinae
+		MELI_Aglaia_spectabilis
+		MELI_Owenia_reticulata
+		MELI_Azadirachta_indica
+		MELI_Swietenia_macrophylla
+		MELI_Toona_ciliata
 	
-	The next step is to write ortholog FASTA files for only those samples
-
-		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
+	The next step is to write ortholog FASTA files for only those samples. 
 	
-		mkdir -p 15_phylonet/00_reduced_fasta
+	It is important to notice that the scrip `keep_taxa_from_fasta_files.py` will keep only FASTA files that have all 7 samples (i.e, no missing taxa). This is important as the maximum likelihood method we will use in Phylonet does not allow for missing data.
 
-		cd 15_phylonet
 
 		python /data_tmp/$USERNAME/script/keep_taxa_from_fasta_files.py /data_tmp/$USERNAME/data/07_phylogenomic_analyses/06_MO_fasta_files fa taxa_to_keep.txt 00_reduced_fasta/
+		
+	Verify that you have the output files
+	
+		cd 00_reduced_fasta
+		
+		ls
+		
+	You should have
+	
+		4691.ortho.rd.fa  5404.ortho.rd.fa  5822.ortho.rd.fa  6119.ortho.rd.fa ...
+		
+	Count how many files you have 
+	
+		ls *.fa | wc -l
+		
+	You should have `234`		
+	
+	Now we need to align, clean the alignment, and infer ML trees for each of this
+	
+	Run the alignments. It should take a couple of minutes
+	
+		parallel -j 4 'mafft --auto --thread 1 {} > "$(cut -d. -f1 <<<"{}").mafft.aln"' ::: *.fa
+
+	Clean the alginments
+
+		parallel -j 4 'clipkit {} -m smart-gap -o  "$(cut -d. -f1-2 <<<"{}").clipkit"' ::: *.aln
+
+		parallel -j 2 '
+ 		p="$(cut -d. -f1 <<<"{}")"
+  		iqtree -m MFP -s "{}" -T 2 --seqtype DNA --prefix "${p}.iqtree"
+  		rm -f "${p}.iqtree.bionj" \
+        "${p}.iqtree.ckp.gz" \
+        "${p}.iqtree.log" \
+        "${p}.iqtree.mldist" \
+        "${p}.iqtree.model.gz" \
+        "${p}.iqtree.uniqueseq.phy" \
+        "${p}.iqtree.contree" \
+        "${p}.iqtree.splits.nex"
+		' ::: *.clipkit
+
 
 	
