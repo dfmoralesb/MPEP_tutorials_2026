@@ -6,6 +6,7 @@
 * [Mapping gene duplications - filter base on concordant clades](#concon)
 * [Identifying ILS and gene flow](#phytop)
 * [Inferring phylogenetic networks](#phylonet)
+* [Choosing the optimal number of reticulation - model selection](#model)
 
 #### How to login to the workstation
 
@@ -752,6 +753,92 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	The `blue` branch is the major edge and the `red` one is the minor edge. The number next to the branches are the inheritance probabilities. 
 
 
+* [Choosing the optimal number of reticulation - model selection](#model)
+
+<a name="model"></a>
+## Choosing the optimal number of reticulation using model selection
+	
+* In the previous section we infer a network allowing up to a single reticulation event. In many cases we want to explore if there additional reticulation events. If more reticulation events are inferred then we need to decide which of the tree topologies/networks explains better our data. For this we will use model selection using the Akaike Information Criterion (AIC), the correct Akaike Information Criterion (AICc), and Bayesian information criterion (BIC) criteria.
+
+
+	I have inferred networks allowing from 0 to 3 reticulation events, using `-x 100`, and additionally I use the parameter `-po` . If `po` is specified, after the search the returned species networks will be optimized for their branch lengths and inheritance probabilities.
+	
+	These searches are more exhaustive the one we did in the previous section and take some time to run.
+	
+	You can see the input file and output files in `/data_tmp/$USERNAME/output/04_analyses/14_phylonet/01_phylonet_run`
+	
+		meliaceae_234_MO_7taxa.nex                           meliaceae_234_MO_7taxa.phylonet_MP_3hyb_x100_po.txt
+		meliaceae_234_MO_7taxa.phylonet_MP_0hyb_x100_po.txt  meliaceae_234_MO_7taxa.tre
+		meliaceae_234_MO_7taxa.phylonet_MP_1hyb_x100_po.txt  meliaceae_234_MO_7taxa.tre.col20.rr
+		meliaceae_234_MO_7taxa.phylonet_MP_2hyb_x100_po.txt  meliaceae_234_MO_7taxa.tre.rr
+
+	No we have 4 competing topologies. You can see then in file `meliaceae_234_MO_7taxa.4_networks.txt`
+	
+		(RUTA_Citrus_hystrix:1.0,(((MELI_Azadirachta_indica:1.0,MELI_Owenia_reticulata:1.0):5.908816609394323,(MELI_Quivisianthe_papinae:1.0,MELI_Aglaia_spectabilis:1.0):2.428930149018744):0.22667612950183902,(MELI_Swietenia_macrophylla:1.0,MELI_Toona_ciliata:1.0):3.5563114636082873):5.907379593597826);
+		(((((MELI_Azadirachta_indica:1.0,MELI_Owenia_reticulata:1.0):5.910215392566465,((MELI_Toona_ciliata:1.0,MELI_Swietenia_macrophylla:1.0):3.522429226305039)#H1:0.1081119594192225::0.7480106968170107):0.05609038130521103,(MELI_Aglaia_spectabilis:1.0,MELI_Quivisianthe_papinae:1.0):2.4598415999678536):5.934452837555024,#H1:5.933834541137582::0.2519893031829893):5.9114640643849405,RUTA_Citrus_hystrix:1.0);
+		(((((MELI_Owenia_reticulata:1.0,MELI_Azadirachta_indica:1.0):5.9116998330472965,((MELI_Swietenia_macrophylla:1.0,MELI_Toona_ciliata:1.0):3.571260198221916)#H1:5.913617835493971::0.15609927212144223):0.49668873216770765,(MELI_Quivisianthe_papinae:1.0,MELI_Aglaia_spectabilis:1.0):2.4123232623185):0.3419515191839638,#H1:0.0011774181844964955::0.8439007278785577):5.909269690061616,RUTA_Citrus_hystrix:1.0);
+		((((((MELI_Toona_ciliata:1.0,MELI_Swietenia_macrophylla:1.0):3.267034079783416)#H1:5.939448425825783::0.4639844754207225,((MELI_Azadirachta_indica:1.0,MELI_Owenia_reticulata:1.0):5.910596258611644)#H2:5.91362142232495::0.695073175568802):0.6739068516334125,(MELI_Aglaia_spectabilis:1.0,MELI_Quivisianthe_papinae:1.0):2.196601040325424):5.9272280967344555,(#H1:1.1458980337503157::0.5360155245792775,#H2:5.913621677480962::0.30492682443119795):0.0011774181844964955):5.909735833906478,RUTA_Citrus_hystrix:1.0);
+	
+	You can plot these networks the same way we did in the previous section with `Julia`
+	
+	
+		conda activate julia
 		
+		julia
+		
+		
+		using PhyloNetworks;
+		using PhyloPlots;
+		using RCall;
+
+		nets = readMultiTopology("meliaceae_234_MO_7taxa.4_networks.txt");
+		R"pdf('meliaceae_234_MO_7taxa.4_networks.pdf', width=20, height=15)"
+		R"par(mar = c(7, 7, 3, 3) + 0.1, xpd = NA)"
+		R"layout(matrix(1:4, nrow = 2, byrow = TRUE))"
+		plot(nets[1], showgamma=true, minorhybridedgecolor="red");
+		plot(nets[2], showgamma=true, minorhybridedgecolor="red");
+		plot(nets[3], showgamma=true, minorhybridedgecolor="red");
+		plot(nets[4], showgamma=true, minorhybridedgecolor="red");
+		R"dev.off()"
 
 	
+	You should have something like this
+	
+	<p align="center"><img src="images/4nets.png" alt="dendro1" width="900"></p>
+	
+	**Note that allowing for a X number of reticulation it does not mean necessary that the return network will have that same number of reticulations**
+	
+	Now we can extract see the "Total log probability" for each network
+	
+		grep "Total log probability:" *_x100_po.txt
+		
+	You will see:
+	
+		meliaceae_234_MO_7taxa.phylonet_MP_0hyb_x100_po.txt:Total log probability: -358.2337599703988
+		meliaceae_234_MO_7taxa.phylonet_MP_1hyb_x100_po.txt:Total log probability: -354.31731840323835
+		meliaceae_234_MO_7taxa.phylonet_MP_2hyb_x100_po.txt:Total log probability: -356.8842603996508
+		meliaceae_234_MO_7taxa.phylonet_MP_3hyb_x100_po.txt:Total log probability: -350.3919133667564
+		
+	With this values and the number of parameter we can proceed to do model selection.
+	
+	The nubmer of parameters <em>k<em> is crucial to get it correct. The number of parameters is easy to calculate. 
+	
+	* For bifurcating trees, it is just the number of total branches, in this case,  `2t-3`, where `t` is the number of tips. 
+	* For networks, it is the number of branches plus the number of inheritance probabilities that are being estimated (always two per each hybridization event), so that would be `(2t-3)+(2h)`, where `h` is the number of hybridizations in the network. 
+	
+	I follow [Yu et al. 2012](ttps://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1002660#s5) for this. They give details of this in the supplemental material.
+	
+	So we have that <em>L<em> is the log likelihood score, <em>k<em> is the number of parameters, and <em>n<em> is the number of gene trees used to estimated the likelihood.
+score.
+
+	We can use the following formulas to calculate AIC, AICc, and BIC
+
+	**The lower the values of these criteria, the better the fit of the model to the data.**
+		
+
+	<p align="center"><img src="images/AIC" alt="dendro1" width="900"></p>
+
+	<p align="center"><img src="images/AICc" alt="dendro1" width="900"></p>
+
+	<p align="center"><img src="images/BIC" alt="dendro1" width="900"></p>
+
