@@ -753,10 +753,10 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	The `blue` branch is the major edge and the `red` one is the minor edge. The number next to the branches are the inheritance probabilities. 
 
 
-* [Choosing the optimal number of reticulation - model selection](#model)
 
 <a name="model"></a>
 ## Choosing the optimal number of reticulation using model selection
+
 	
 * In the previous section we infer a network allowing up to a single reticulation event. In many cases we want to explore if there additional reticulation events. If more reticulation events are inferred then we need to decide which of the tree topologies/networks explains better our data. For this we will use model selection using the Akaike Information Criterion (AIC), the correct Akaike Information Criterion (AICc), and Bayesian information criterion (BIC) criteria.
 
@@ -827,7 +827,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	* For networks, it is the number of branches plus the number of inheritance probabilities that are being estimated (always two per each hybridization event), so that would be `(2t-3)+(2h)`, where `h` is the number of hybridizations in the network. 
 	
 	
-	I follow [Yu et al. 2012](ttps://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1002660#s5) for this. They give details of this in the supplemental material.
+	I follow [Yu et al. 2012](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1002660#s5) for this. They give details of this in the supplemental material.
 	
 	So we have that <em>L</em> is the log likelihood score, <em>k</em> is the number of parameters, and <em>n</em> is the number of gene trees used to estimated the likelihood.
 score.
