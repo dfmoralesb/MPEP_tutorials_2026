@@ -821,14 +821,15 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 		
 	With this values and the number of parameter we can proceed to do model selection.
 	
-	The nubmer of parameters <em>k<em> is crucial to get it correct. The number of parameters is easy to calculate. 
+	The nubmer of parameters <em>k</em> is crucial to get it correct. The number of parameters is easy to calculate. 
 	
 	* For bifurcating trees, it is just the number of total branches, in this case,  `2t-3`, where `t` is the number of tips. 
 	* For networks, it is the number of branches plus the number of inheritance probabilities that are being estimated (always two per each hybridization event), so that would be `(2t-3)+(2h)`, where `h` is the number of hybridizations in the network. 
 	
+	
 	I follow [Yu et al. 2012](ttps://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1002660#s5) for this. They give details of this in the supplemental material.
 	
-	So we have that <em>L<em> is the log likelihood score, <em>k<em> is the number of parameters, and <em>n<em> is the number of gene trees used to estimated the likelihood.
+	So we have that <em>L</em> is the log likelihood score, <em>k</em> is the number of parameters, and <em>n</em> is the number of gene trees used to estimated the likelihood.
 score.
 
 	We can use the following formulas to calculate AIC, AICc, and BIC
@@ -836,9 +837,9 @@ score.
 	**The lower the values of these criteria, the better the fit of the model to the data.**
 		
 
-	<p align="center"><img src="images/AIC.png" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/AIC.png" alt="dendro1" width="300"></p>
 
-	<p align="center"><img src="images/AICc.png" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/AICc.png" alt="dendro1" width="300"></p>
 
-	<p align="center"><img src="images/BIC.png" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/BIC.png" alt="dendro1" width="300"></p>
 
