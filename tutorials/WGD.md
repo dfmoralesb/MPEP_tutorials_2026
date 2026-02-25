@@ -860,7 +860,7 @@ score.
 	* Between 6 and 10, the evidence against the candidate model is strong.
 	* Greater than 10, the evidence is very strong.
 	
-	I have provided and spreadsheet with the calculation seen below in Moddle in today's foldel
+	I have provided the spreadsheet with the calculations seen below in the Moddle's directory for today.
 	
 	
 	<p align="center"><img src="images/modelselection.png" alt="dendro1" width="1200"></p>
