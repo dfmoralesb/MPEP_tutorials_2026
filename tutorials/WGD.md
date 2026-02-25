@@ -836,9 +836,9 @@ score.
 	**The lower the values of these criteria, the better the fit of the model to the data.**
 		
 
-	<p align="center"><img src="images/AIC" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/AIC.png" alt="dendro1" width="900"></p>
 
-	<p align="center"><img src="images/AICc" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/AICc.png" alt="dendro1" width="900"></p>
 
-	<p align="center"><img src="images/BIC" alt="dendro1" width="900"></p>
+	<p align="center"><img src="images/BIC.png" alt="dendro1" width="900"></p>
 
