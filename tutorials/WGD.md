@@ -415,7 +415,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	* Usually we need to reduced our sampling to test specific hypothesis of hybridization based on previous knowledge (e.g., morphology) or phylogenetic patterns (e.g. gene tree discordance). So serach for networks focused on clades (or representative taxa), not “whole-tree” datasets with dozens+ taxa.
 	
-	* PhyloNet expects rooted gene trees. Wrong roots can look like introgression
+	* PhyloNet expects rooted gene trees. Wrong roots or inconsistent rooting can look like gene flow.
 	
 
 	All this being said, in this example we will focus for potential reticulations on the backbone of the family, based on our conflict analyses.
@@ -450,9 +450,9 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
 	
-		mkdir -p 15_phylonet/00_reduced_fasta
+		mkdir -p 14_phylonet/00_reduced_fasta
 
-		cd 15_phylonet
+		cd 14_phylonet
 		
 	Write the text file with the samples to keep
 	
@@ -504,16 +504,22 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 		
 	You should have `234`		
 	
-	Now we need to align, clean the alignment, and infer ML trees for each of this
+	Now, we need to align, clean the alignment, and infer ML trees for each of this
 	
 	Run the alignments. It should take a couple of minutes
 	
+		conda activate captus
+	
 		parallel -j 4 'mafft --auto --thread 1 {} > "$(cut -d. -f1 <<<"{}").mafft.aln"' ::: *.fa
 
-	Clean the alginments
+	Clean the alignments. It should be very fast
+	
 
 		parallel -j 4 'clipkit {} -m smart-gap -o  "$(cut -d. -f1-2 <<<"{}").clipkit"' ::: *.aln
 
+
+	And finally infer the ML trees. This should take 3 to 5 minutes
+	
 		parallel -j 2 '
  		p="$(cut -d. -f1 <<<"{}")"
   		iqtree -m MFP -s "{}" -T 2 --seqtype DNA --prefix "${p}.iqtree"
@@ -526,6 +532,226 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
         "${p}.iqtree.contree" \
         "${p}.iqtree.splits.nex"
 		' ::: *.clipkit
+		
+	Now, we are ready to prepare the files for running PhyloNet
+	
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/14_phylonet
 
+		
+	Let's make a new directory were we will be running PhyloNet
+	
+		
+		mkdir 01_phylonet_run
+
+		cd 01_phylonet_run
+
+	Now, we need to put all gene trees from the previous step in a single file	
+		
+		cat ../00_reduced_fasta/*.treefile > meliaceae_234_MO_7taxa.tre
+		
+		
+	We need to root the trees. In this call all with `RUTA_Citrus_hystrix`
+	
+
+		pxrr -g RUTA_Citrus_hystrix -t meliaceae_234_MO_7taxa.tre -o meliaceae_234_MO_7taxa.tre.rr
+		
+		
+	Check that all you less are rooted
+	
+		less meliaceae_234_MO_7taxa.tre.col_20.tre
+		
+	You should see that all trees start with `RUTA_Citrus_hystrix`
+	
+		(RUTA_Citrus_hystrix:0.24371,((MELI_Swietenia_macrophylla:0.10105,MELI_Toona_ciliata:0.05406):0.04224,((MELI_Azadirachta_indica:0.02627,MELI_Owenia_reticulata:0.03820):0.15593,(MELI_Aglaia_spectabilis:0.10274,MELI_Quivisianthe_papinae:0.34948):0.06033):0.04099):0.24371):0.00000;
+		(RUTA_Citrus_hystrix:0.12483,(((MELI_Azadirachta_indica:0.03651,MELI_Owenia_reticulata:0.01205):0.06432,(MELI_Swietenia_macrophylla:0.04178,MELI_Toona_ciliata:0.03107):0.00523):0.11575,(MELI_Aglaia_spectabilis:0.02761,MELI_Quivisianthe_papinae:0.17835):0.07330):0.12483):0.00000;
+		(RUTA_Citrus_hystrix:0.08756,(((MELI_Azadirachta_indica:0.01473,MELI_Owenia_reticulata:0.04151):0.05463,(MELI_Swietenia_macrophylla:0.04529,MELI_Toona_ciliata:0.04864):0.03597):0.00351,(MELI_Aglaia_spectabilis:0.08716,MELI_Quivisianthe_papinae:0.06134):0.03469):0.08756):0.00000;
+		(RUTA_Citrus_hystrix:0.09815,(MELI_Toona_ciliata:0.07655,((MELI_Quivisianthe_papinae:0.05866,MELI_Swietenia_macrophylla:0.33412):0.22345,(MELI_Aglaia_spectabilis:0.13531,(MELI_Azadirachta_indica:0.03499,MELI_Owenia_reticulata:0.03734):0.06877):0.02018):0.01268):0.09815):0.00000;
+		(RUTA_Citrus_hystrix:0.11093,((MELI_Azadirachta_indica:0.02163,MELI_Owenia_reticulata:0.03328):0.07231,((MELI_Swietenia_macrophylla:0.07030,MELI_Toona_ciliata:0.03172):0.03767,(MELI_Aglaia_spectabilis:0.08539,MELI_Quivisianthe_papinae:0.10172):0.02092):0.00770):0.11093):0.00000;
+		...
+		
+		
+	Similar to ASTRAL we can collapse nodes wih low support (< 20%)
+	
+	
+		python /data_tmp/$USERNAME/script/collapse_branches_bs_multiphylo.py meliaceae_234_MO_7taxa.tre.rr 20
+		
+	Next, we need to format the previous file with the 234 trees into a NEXUS file for PhyloNet 
+		
+
+		awk '{ print FNR " = " $0 }' meliaceae_234_MO_7taxa.tre.col_20.tre | sed -e 's/^/tree tree_/' > meliaceae_234_MO_7taxa.nex
+		sed -i -e '1s/^/#NEXUS\nBEGIN TREES;\n/' meliaceae_234_MO_7taxa.nex
+		sed -i -e '$aEND;\nBEGIN PHYLONET;\nInferNetwork_ML (all) 1 -x 50 -n 1 -di -pl 4 meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt;\nEND;' meliaceae_234_MO_7taxa.nex
+
+	Check the format of the NEXUS file `meliaceae_234_MO_7taxa.nex`
+	
+		less meliaceae_234_MO_7taxa.nex
+		
+	You should see:
+	
+		#NEXUS
+		BEGIN TREES;
+		tree tree_1 = (RUTA_Citrus_hystrix:0.24371,((MELI_Swietenia_macrophylla:0.10105,MELI_Toona_ciliata:0.05406):0.04224,((MELI_Azadirachta_indica:0.02627,MELI_Owenia_reticulata:0.03820):0.15593,(MELI_Aglaia_spectabilis:0.10274,MELI_Quivisianthe_papinae:0.34948):0.06033):0.04099):0.24371):0.00000;
+		tree tree_2 = (RUTA_Citrus_hystrix:0.12483,(((MELI_Azadirachta_indica:0.03651,MELI_Owenia_reticulata:0.01205):0.06432,(MELI_Swietenia_macrophylla:0.04178,MELI_Toona_ciliata:0.03107):0.00523):0.11575,(MELI_Aglaia_spectabilis:0.02761,MELI_Quivisianthe_papinae:0.17835):0.07330):0.12483):0.00000;
+		tree tree_3 = (RUTA_Citrus_hystrix:0.08756,(((MELI_Azadirachta_indica:0.01473,MELI_Owenia_reticulata:0.04151):0.05463,(MELI_Swietenia_macrophylla:0.04529,MELI_Toona_ciliata:0.04864):0.03597):0.00351,(MELI_Aglaia_spectabilis:0.08716,MELI_Quivisianthe_papinae:0.06134):0.03469):0.08756):0.00000;
+		...
+		...
+		...
+		tree tree_234 = (RUTA_Citrus_hystrix:0.10816,((MELI_Swietenia_macrophylla:0.18517,MELI_Toona_ciliata:0.03895):0.10109,((MELI_Azadirachta_indica:0.02865,MELI_Owenia_reticulata:0.04316):0.10518,(MELI_Aglaia_spectabilis:0.11507,MELI_Quivisianthe_papinae:0.12344):0.03132):0.00955):0.10816):0.00000;
+		END;
+		BEGIN PHYLONET;
+		InferNetwork_ML (all) 1 -x 50 -n 1 -di -pl 4 meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt;
+		END;	
+
+	A NEXUS file always starts with `#NEXUS` and then it has difference blocks. Block start with `BEGIN block_name;` and ends with `END;`
+	
+	Here we have the `TREES` block where you list and number the trees and the `PHYLONET` block where you provide the command you want to run in Phylonet. For more details of the NEXUS format for PhyloNet see [here](https://phylogenomics.rice.edu/html/phylonetOverview.html)
+	
+	In this case our PhyloNet command is `InferNetwork_ML (all) 1 -x 50 -n 1 -di -pl 4 meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt` This means
+	
+	* InferNetwork_ML: Infers a phylogenetic network from gene trees under maximum likelihood.
+	
+	* numReticulations: In this case is `1`
+	
+	* (all): geneTreeList. Here we are using all tree, but it could be omma delimited list of gene tree identifiers or comma delimited list of sets of gene tree identifiers.
+		
+	* -x numRuns: The number of runs of the search. Default value is 5.
+	
+	* -n numNetReturned: Number of optimal networks to return. Default value is 1.
+	
+	* -di: Output the Rich Newick string of the inferred network that can be read by Dendroscope.
+	
+	* -pl numProcessors: Number of processors if you want the computation to be done in parallel. Default value is 1.
+	
+	* meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt: This is the output file name with the networks and ML score
+	
+	All other options are the default ones. For all Phylonet settings see [here](https://phylogenomics.rice.edu/html/commands/InferNetwork_ML.html)
+	
+	We can run PhyloNet now:
+	
+		java -jar /data_tmp/$USERNAME/apps/phylonet/PhyloNet.3.8.4.jar meliaceae_234_MO_7taxa.nex 
+		
+	You should start seeing:
+	
+		InferNetwork_ML (tree_234, tree_233, tree_232, tree_231, tree_230, tree_229, tree_228, tree_227, tree_226, tree_225, tree_224, tree_223, tree_222, tree_221, tree_220, tree_219, tree_218, tree_217, tree_216, tree_215, tree_214, tree_213, tree_212, tree_211, tree_210, tree_209, tree_208, tree_207, tree_206, tree_205, tree_204, tree_203, tree_202, tree_201, tree_200, tree_199, tree_198, tree_197, tree_196, tree_195, tree_194, tree_193, tree_192, tree_191, tree_190, tree_189, tree_188, tree_187, tree_186, tree_185, tree_184, tree_183, tree_182, tree_181, tree_180, tree_179, tree_178, tree_177, tree_176, tree_175, tree_174, tree_173, tree_172, tree_171, tree_170, tree_169, tree_168, tree_167, tree_166, tree_165, tree_164, tree_163, tree_162, tree_161, tree_160, tree_159, tree_158, tree_157, tree_156, tree_155, tree_154, tree_153, tree_152, tree_151, tree_150, tree_149, tree_148, tree_147, tree_146, tree_145, tree_144, tree_143, tree_142, tree_141, tree_140, tree_139, tree_138, tree_137, tree_136, tree_135, tree_134, tree_133, tree_132, tree_131, tree_130, tree_129, tree_128, tree_127, tree_126, tree_125, tree_124, tree_123, tree_122, tree_121, tree_120, tree_119, tree_118, tree_117, tree_116, tree_115, tree_114, tree_113, tree_112, tree_111, tree_110, tree_109, tree_108, tree_107, tree_106, tree_105, tree_104, tree_103, tree_102, tree_101, tree_100, tree_99, tree_98, tree_97, tree_96, tree_95, tree_94, tree_93, tree_92, tree_91, tree_90, tree_89, tree_88, tree_87, tree_86, tree_85, tree_84, tree_83, tree_82, tree_81, tree_80, tree_79, tree_78, tree_77, tree_76, tree_75, tree_74, tree_73, tree_72, tree_71, tree_70, tree_69, tree_68, tree_67, tree_66, tree_65, tree_64, tree_63, tree_62, tree_61, tree_60, tree_59, tree_58, tree_57, tree_56, tree_55, tree_54, tree_53, tree_52, tree_51, tree_50, tree_49, tree_48, tree_47, tree_46, tree_45, tree_44, tree_43, tree_42, tree_41, tree_40, tree_39, tree_38, tree_37, tree_36, tree_35, tree_34, tree_33, tree_32, tree_31, tree_30, tree_29, tree_28, tree_27, tree_26, tree_25, tree_24, tree_23, tree_22, tree_21, tree_20, tree_19, tree_18, tree_17, tree_16, tree_15, tree_14, tree_13, tree_12, tree_11, tree_10, tree_9, tree_8, tree_7, tree_6, tree_5, tree_4, tree_3, tree_2, tree_1) 1 -x 5 -n 1 -di -pl 4 meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt
+	
+		Results after run #1
+		-359.6740707895197: (RUTA_Citrus_hystrix:3.520428454788389,((MELI_Toona_ciliata:2.8418097235696713,MELI_Swietenia_macrophylla:1.4999915229632703)I4:3.418836653228526,((MELI_Owenia_reticulata:1.2123771231871079,MELI_Azadirachta_indica:1.1242738519699988)I0:5.775145337913473,(MELI_Aglaia_spectabilis:1.542487031943315,MELI_Quivisianthe_papinae:0.03421451045036398)I6:2.460447769760712)I2:0.19283462668211412)I5:6.835051164953911)I3;
+		Running Time (min): 0.2549
+		===============================
+
+
+		Results after run #2
+		-359.6740707895197: (RUTA_Citrus_hystrix:3.520428454788389,((MELI_Toona_ciliata:2.8418097235696713,MELI_Swietenia_macrophylla:1.4999915229632703)I4:3.418836653228526,((MELI_Owenia_reticulata:1.2123771231871079,MELI_Azadirachta_indica:1.1242738519699988)I0:5.775145337913473,(MELI_Aglaia_spectabilis:1.542487031943315,MELI_Quivisianthe_papinae:0.03421451045036398)I6:2.460447769760712)I2:0.19283462668211412)I5:6.835051164953911)I3;
+		Running Time (min): 0.06973333333333333
+		===============================
+		
+		....
+		....
+		....
+		
+		
+	It should take 6 to 7 minutes until is done and you see: 
+	
+	
+		Writing output to /data_tmp/mpeuser1/data/07_phylogenomic_analyses/14_phylonet/01_phylonet_run/meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt
+		
+	Now let's see check the output file:
+	
+		cat meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt
+		
+	You must see:
+	
+		Inferred Network #1:
+		(((((MELI_Azadirachta_indica:1.0,MELI_Owenia_reticulata:1.0):5.910215392566465,((MELI_Toona_ciliata:1.0,MELI_Swietenia_macrophylla:1.0):3.522429226305039)#H1:0.1081119594192225::0.7480106968170107):0.05609038130521103,(MELI_Aglaia_spectabilis:1.0,MELI_Quivisianthe_papinae:1.0):2.4598415999678536):5.934452837555024,#H1:5.933834541137582::0.2519893031829893):5.9114640643849405,RUTA_Citrus_hystrix:1.0);
+		Total log probability: -354.31731840323835
+		Visualize in Dendroscope : (((((MELI_Azadirachta_indica,MELI_Owenia_reticulata),((MELI_Toona_ciliata,MELI_Swietenia_macrophylla))#H1),(MELI_Aglaia_spectabilis,MELI_Quivisianthe_papinae)),#H1),RUTA_Citrus_hystrix);
+
+	* The fist line is the number of the network. In this case we only one to be returned.
+	
+	* The second line is the network in extended Newick format including the inheritance probabilities (gamma)
+	
+	* The third line is the ML score
+	
+	* The fourth line is the the network in extended Newick format without inheritance probabilities so it can be open in Dendroscope.
+	
+	We can plot the network now:
+	
+	* First we will do in in Dendroscpe
+	
+			grep "Visualize in Dendroscope" meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt | sed 's/Visualize in Dendroscope : //' | sed -E 's/Running.+//' > meliaceae_234_MO_7taxa.phylonet_MP_1hyb.dendroscope.txt
+
+	You can either download this file or open it and copied directly on a text editor in you laptop and save it as `*.txt` files
+	
+			cat meliaceae_234_MO_7taxa.phylonet_MP_1hyb.dendroscope.txt
+			
+	You will get:
+	
+		(((((MELI_Azadirachta_indica,MELI_Owenia_reticulata),((MELI_Toona_ciliata,MELI_Swietenia_macrophylla))#H1),(MELI_Aglaia_spectabilis,MELI_Quivisianthe_papinae)),#H1),RUTA_Citrus_hystrix);
+			
+	Open Dendroscope on your laptop		
+	
+			
+	<p align="center"><img src="images/dendro1.png" alt="dendro1" width="900"></p>
+
+
+	Go to `File` -> `Open` and select your network file
+	
+	<p align="center"><img src="images/dendro2.png" alt="dendro1" width="900"></p>
+
+	
+	Then you should see something like this.
+	
+	<p align="center"><img src="images/dendro3.png" alt="dendro1" width="900"></p>
+	
+	The blue curve branches are connect the parental linage to the hybrid clade.
+	
+	**Keep in mind that you network might be different that the one showed here** Because the network search space is vastly larger than the tree search space, heuristic searches can converge on different local optima, so there is no guarantee of recovering the same network.
+
+	Now lets plot the same network with `PhyloPlots` in `Julia`
+	
+	First let's extract the network
+
+		grep -A 1 "Network" meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt | sed -E 's/Inferred.+//' | sed -E 's/^--//' | sed '/^$/d' > meliaceae_234_MO_7taxa.phylonet_MP_1hyb.phyloplots.txt
+
+	Now let's open Julia and load the PhyloPlots and other necessary packages 
+	
+		conda activate Juila
+		
+		julia
+		
+	<p align="center"><img src="images/julia1.png" alt="dendro1" width="900"></p>
+	
+	While in `Julia` type:
+	
+	
+		using PhyloNetworks;
+		using PhyloPlots;
+		using RCall;
+
+
+		net = readTopology("meliaceae_234_MO_7taxa.phylonet_MP_1hyb.phyloplots.txt");
+		R"pdf('meliaceae_234_MO_7taxa.phylonet_MP_1hyb.phyloplots.pdf', width=20, height=15)"
+		R"par(mar = c(7, 7, 3, 3) + 0.1, xpd = NA)"
+		plot(net, showgamma=true, minorhybridedgecolor="red")
+		R"dev.off()"
+
+	After is done you can exit `Julia`
+	
+		exit()
+
+	And you should have the file `meliaceae_234_MO_7taxa.phylonet_MP_1hyb.phyloplots.pdf`
+	
+	Download this file to you laptop. Type this on you laptop.
+	
+		scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/07_phylogenomic_analyses/14_phylonet/01_phylonet_run/meliaceae_234_MO_7taxa.phylonet_MP_1hyb.phyloplots.pdf ~/Desktop
+	
+	You should see
+
+	<p align="center"><img src="images/phyloplots.png" alt="dendro1" width="900"></p>
+	
+	The `blue` branch is the major edge and the `red` one is the minor edge. The number next to the branches are the inheritance probabilities. 
+
+
+		
 
 	
