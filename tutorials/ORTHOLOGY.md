@@ -633,6 +633,13 @@
 		
 		cp -r /data_tmp/$USERNAME/output/03_captus/04_alignments/01_unaligned/01_coding_NUC/03_genes/ /data_tmp/$USERNAME/data/07_phylogenomic_analyses/00_unaligned_fasta_files
 	
+	Before we use these files we also need to add the `@` character so the scripts can find the correct gene copy that pass all filter and orthology inference.
+	
+	
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/00_unaligned_fasta_files
+		
+		for i in *.fna; do sed -i -E 's/(>.+)(__)([[:digit:]]+)( .+)/\1@pg_\3/; s/(>.+)( \[query=.+)/\1@pg_uq/' "$i"; done
+	
 	Let's create an output directory.
 	
 		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses

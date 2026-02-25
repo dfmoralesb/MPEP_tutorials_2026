@@ -300,15 +300,15 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 
 	Let's create a new directory where will re-run ASTRAL and Phytop
 
-		cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
 
 		mkdir 14_phytop
 
-		cd /data_tmp/mpemaster/data/07_phylogenomic_analyses/14_phytop
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/14_phytop
 	
 	We will copy the same input that we used for ASTRAL yesterday
 
-		cp /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_astral/meliaceae_334_MO_orthologs.col_20.tre .
+		cp /data_tmp/$USERNAME/data/07_phylogenomic_analyses/07_astral/meliaceae_334_MO_orthologs.col_20.tre .
 	
 	Now let's run ASTRAL with the flag `-u 2`
 
@@ -427,11 +427,49 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	<p align="center"><img src="images/cf.png" alt="prop" width="900"></p>
 	
-	Based on the discordance patters, we are going to test if there is potential hybridization among three clades: Cedreloideae, Meliaeae, and remaining of Melioideae.
+	Based on the discordance patters, we are going to test if there is potential hybridization among three clades: Cedreloideae, Meliaeae, and the remaining of Melioideae.
 	
 	Given that this clades have high support, we are going to choose *two* samples from each clade and *one* outgroup to to root all gene trees. We will do based on the number of orthologs per sample. We well choose the taxa for each clade and outgroup that have the highest number of orthologs
 	
-	<p align="center"><img src="images/lociphylonet.png" alt="locphylo" width="900"></p>
-
+	<p align="center"><img src="images/lociphylonet2.png" alt="locphylo" width="900"></p>
 	
+	Based on this stats we will work the following 7 species:
+	
+	* RUTA_Citrus_hystrix
+	* MELI_Quivisianthe_papinae
+	* MELI_Aglaia_spectabilis
+	* MELI_Owenia_reticulata
+	* MELI_Azadirachta_indica
+	* MELI_Swietenia_macrophylla
+	* MELI_Toona_ciliata
+	
+	
+	We will put this names in a file called `taxa_to_keep.txt`
+	
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
+	
+		mkdir -p 15_phylonet/00_reduced_fasta
+
+		cd 15_phylonet
+		
+		printf "%s\n" \
+  		"RUTA_Citrus_hystrix" \
+  		"MELI_Quivisianthe_papinae" \
+  		"MELI_Aglaia_spectabilis" \
+  		"MELI_Owenia_reticulata" \
+  		"MELI_Azadirachta_indica" \
+  		"MELI_Swietenia_macrophylla" \
+  		"MELI_Toona_ciliata" \
+  		> taxa_to_keep.txt
+	
+	The next step is to write ortholog FASTA files for only those samples
+
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
+	
+		mkdir -p 15_phylonet/00_reduced_fasta
+
+		cd 15_phylonet
+
+		python /data_tmp/$USERNAME/script/keep_taxa_from_fasta_files.py /data_tmp/$USERNAME/data/07_phylogenomic_analyses/06_MO_fasta_files fa taxa_to_keep.txt 00_reduced_fasta/
+
 	
