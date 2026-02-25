@@ -806,6 +806,10 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	<p align="center"><img src="images/4nets.png" alt="dendro1" width="900"></p>
 	
+	Or if you use Dendroscope and the file `meliaceae_234_MO_7taxa.4_networks_dendro.txt`
+	
+	<p align="center"><img src="images/dendro4.png" alt="dendro1" width="900"></p>
+	
 	**Note that allowing for a X number of reticulation it does not mean necessary that the return network will have that same number of reticulations**
 	
 	Now we can extract see the "Total log probability" for each network
