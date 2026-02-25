@@ -431,7 +431,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 	Given that this clades have high support, we are going to choose *two* samples from each clade and *one* outgroup to to root all gene trees. We will do based on the number of orthologs per sample. We well choose the taxa for each clade and outgroup that have the highest number of orthologs
 	
-	<p align="center"><img src="images/lociphylonet" alt="locphylo" width="900"></p>
+	<p align="center"><img src="images/lociphylonet.png" alt="locphylo" width="900"></p>
 
 	
 	
