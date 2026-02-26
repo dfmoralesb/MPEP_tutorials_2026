@@ -395,13 +395,13 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	* ILS-e and IH-e represent the proportion of gene tree topological incongruence that can be explained by ILS and IH, respectively 
 
 
-		**ILS-i** = how strong ILS is on that branch, scaled 0–100% 
+	*	**ILS-i** = how strong ILS is on that branch, scaled 0–100% 
 
-		**ILS-e** = how much of the observed discordant gene trees (q2 ≈ q3) can be attributed to ILS
+	*	**ILS-e** = how much of the observed discordant gene trees (q2 ≈ q3) can be attributed to ILS
 
-		**IH-i**  = how strong the asymmetric introgression/hybridization signal is, scaled 0–50%
+	*	**IH-i**  = how strong the asymmetric introgression/hybridization signal is, scaled 0–50%
 
-		**IH-e** = the excess discordance attributable to that asymmetry (q2 ≠ q3)
+	*	**IH-e** = the excess discordance attributable to that asymmetry (q2 ≠ q3)
 		
 		#### What patterns do you see? 
 
@@ -755,7 +755,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 
 
 <a name="model"></a>
-## Choosing the optimal number of reticulation using model selection
+## Choosing the optimal number of reticulations using model selection
 
 	
 * In the previous section we infer a network allowing up to a single reticulation event. In many cases we want to explore if there additional reticulation events. If more reticulation events are inferred then we need to decide which of the tree topologies/networks explains better our data. For this we will use model selection using the Akaike Information Criterion (AIC), the correct Akaike Information Criterion (AICc), and Bayesian information criterion (BIC) criteria.
