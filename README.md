@@ -100,9 +100,9 @@ The following tutorials were written by Dr. Elizabeth Joyce for the 2025 edition
 
 * [Divergence Time Estimation](tutorials/lizzy_tutorials/DivergenceTimeEstimation_BEAST_TargetCapture.md)<br>A tutorial to estimate time-calibrated phylogenies with BEAST
 
-* [Ancestral State Reconstruction](https://github.com/joyceem/MPEP_tutorials/blob/main/tutorials/Ancestral_Trait_Reconstruction.md)<br>A tutorial to run ancestral state reconstructions of discrete character with  Mk models in a likelihood framework.
+* [Ancestral State Reconstruction](tutorials/lizzy_tutorials/Ancestral_Trait_Reconstruction.md)<br>A tutorial to run ancestral state reconstructions of discrete character with  Mk models in a likelihood framework.
 
-* [Ancestral Area Reconstruction](https://github.com/joyceem/MPEP_tutorials/blob/main/tutorials/Ancestral_Area_Reconstruction.md)<br>A tutorial to run ancestral area reconstructions using CMTC models in a likelihood framework and Bayesian stochastic mapping with  BioGioBears.
+* [Ancestral Area Reconstruction](tutorials/lizzy_tutorials/Ancestral_Area_Reconstruction.md)<br>A tutorial to run ancestral area reconstructions using CMTC models in a likelihood framework and Bayesian stochastic mapping with  BioGioBears.
 
 
 
