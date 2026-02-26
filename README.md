@@ -82,27 +82,27 @@ All data for analyses and output will be located on the workstation. If not, the
 
 By Diego
 
-* [NGS data](tutorials/NGS.md)<br>A tutorial on NGS data and target enrichment data
+* [NGS data](tutorials/NGS.md)<br>A tutorial on NGS data and target enrichment data / **(Day 2)**
 
-* [Target enrichment data processing](tutorials/CAPTUS.md)<br>A tutorial on how to process target enrichment data with CAPTUS
+* [Target enrichment data processing](tutorials/CAPTUS.md)<br>A tutorial on how to process target enrichment data with CAPTUS / **(Day 3)**
 
-* [Maximum-Likelihood Phylogenetic Inference](tutorials/ML.md)<br>A tutorial on phylogenetic inference with maximum likelihood using IQ-TREE
+* [Maximum-Likelihood Phylogenetic Inference](tutorials/ML.md)<br>A tutorial on phylogenetic inference with maximum likelihood using IQ-TREE / **(Day 3)**
 
-* [Coalescent-based Species Tree Inference](tutorials/ASTRAL.md)<br>A tutorial on coalescent-based species tree inference with ASTRAL
+* [Coalescent-based Species Tree Inference](tutorials/ASTRAL.md)<br>A tutorial on coalescent-based species tree inference with ASTRAL / **(Day 4)**
 
-* [Phylogenomics](tutorials/ORTHOLOGY.md)<br>A tutorial on the phylogenomics workflow - with a focus on tree-based orthology inference
+* [Phylogenomics](tutorials/ORTHOLOGY.md)<br>A tutorial on the phylogenomics workflow - with a focus on tree-based orthology inference **(Day 4)**
 
-* [Alternative support values - Conflict analysis](tutorials/CONFLICT.MD)<br>A tutorial on alternative ways to measure node support - with a focus on conflict analyses
+* [Alternative support values - Conflict analysis](tutorials/CONFLICT.MD)<br>A tutorial on alternative ways to measure node support - with a focus on conflict analyses / **(Day 5)**
 
-* [Identifying ILS vs gene flow, mapping whole genome duplications, and coalescent-based species networks ](tutorials/WGD.md)<br>A tutorial on ILS vs gene flow with Phytop, mapping gene duplications using a tree-based approach, and inferring phylogenetic networks with PhyloNet.
+* [Identifying ILS vs gene flow, mapping whole genome duplications, and coalescent-based species networks ](tutorials/WGD.md)<br>A tutorial on ILS vs gene flow with Phytop, mapping gene duplications using a tree-based approach, and inferring phylogenetic networks with PhyloNet / **(Day 6)**
 
 The following tutorials were written by Dr. Elizabeth Joyce for the 2025 edition of this course.
 
-* [Divergence Time Estimation](tutorials/lizzy_tutorials/DivergenceTimeEstimation_BEAST_TargetCapture.md)<br>A tutorial to estimate time-calibrated phylogenies with BEAST
+* [Divergence Time Estimation](tutorials/lizzy_tutorials/DivergenceTimeEstimation_BEAST_TargetCapture.md)<br>A tutorial to estimate time-calibrated phylogenies with BEAST / **(Day 7)**
 
-* [Ancestral State Reconstruction](tutorials/lizzy_tutorials/Ancestral_Trait_Reconstruction.md)<br>A tutorial to run ancestral state reconstructions of discrete character with  Mk models in a likelihood framework.
+* [Ancestral State Reconstruction](tutorials/lizzy_tutorials/Ancestral_Trait_Reconstruction.md)<br>A tutorial to run ancestral state reconstructions of discrete character with  Mk models in a likelihood framework / **(Day 8)**
 
-* [Ancestral Area Reconstruction](tutorials/lizzy_tutorials/Ancestral_Area_Reconstruction.md)<br>A tutorial to run ancestral area reconstructions using CMTC models in a likelihood framework and Bayesian stochastic mapping with  BioGioBears.
+* [Ancestral Area Reconstruction](tutorials/lizzy_tutorials/Ancestral_Area_Reconstruction.md)<br>A tutorial to run ancestral area reconstructions using CMTC models in a likelihood framework and Bayesian stochastic mapping with  BioGioBear / **(Day 9)**
 
 
 
