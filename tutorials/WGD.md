@@ -451,9 +451,9 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 	
 		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/
 	
-		mkdir -p 14_phylonet/00_reduced_fasta
+		mkdir -p 15_phylonet/00_reduced_fasta
 
-		cd 14_phylonet
+		cd 15_phylonet
 		
 	Write the text file with the samples to keep
 	

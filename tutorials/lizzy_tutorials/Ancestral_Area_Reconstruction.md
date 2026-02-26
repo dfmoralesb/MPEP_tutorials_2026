@@ -125,7 +125,7 @@ More information about BSM can be found here:
 1. Matzke, Nicholas J. (2016). Stochastic mapping under biogeographical models. PhyloWiki BioGeoBEARS website, 2016,  
 [http://phylo.wikidot.com/biogeobears#stochastic_mapping](http://phylo.wikidot.com/biogeobears#stochastic_mapping).
 
-Open the R script 3-BGB_BSM.R in R. Execute the script line by line, paying attention to the names of the input files and working paths. This script builds the BSM, runs 100 iterations, and then summarises the 100 iterations, producing a table and histograms with information about the number of anagenetic dispersal, sympatric, vicariance and founder events over time.
+Open the R script `3-BGB_BSM.R` in R. Execute the script line by line, paying attention to the names of the input files and working paths. This script builds the BSM, runs 100 iterations, and then summarises the 100 iterations, producing a table and histograms with information about the number of anagenetic dispersal, sympatric, vicariance and founder events over time.
 
 Open the first stochastic map, `DECjTimStr_single_stochastic_map_n1.pdf`. 
 
@@ -133,7 +133,7 @@ Open the first stochastic map, `DECjTimStr_single_stochastic_map_n1.pdf`.
 
 What does this show?
 
-Explore the summary tables. What does `sumamry_counts_BSMs` show? What does `all_dispersals_counts_fromto_means.txt` show?
+Explore the summary tables. What does `summary_counts_BSMs.txt` show? What does `all_dispersals_counts_fromto_means.txt` show?
 
 By manipulating the BSM output files such as `ana_events_table` further, you can also summarise biogeographic events between areas over time. We won't do this for this tutorial. but as an example, this is the average number of dispersal events between Sunda, Sahul and Wallace over time:
 
