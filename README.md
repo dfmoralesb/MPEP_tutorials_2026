@@ -15,8 +15,7 @@ This repository contains the instructions and tutorials for the **Molecular Phyl
 | Julia	Martins Levinstein | mpeuser4 |
 | William Alejandro Pacheco Useche	| mpeuser5 |
 | Juan Jose	Pinzon Bustos | mpeuser6 |
-| Matteo	Rigano | mpeuser7 |
-| Nathan	Troyer | mpeuser8 |
+| Nathan	Troyer | mpeuser7 |
 
 #### How to login to the workstation
 
@@ -99,7 +98,7 @@ By Diego
 
 The following tutorials were written by Dr. Elizabeth Joyce for the 2025 edition of this course.
 
-* [Divergence Time Estimation II](https://github.com/joyceem/MPEP_tutorials/blob/main/tutorials/DivergenceTimeEstimation_BEAST_TargetCapture.md)<br>A tutorial to estimate time-calibrated phylogenies with BEAST
+* [Divergence Time Estimation](tutorials/lizzy_tutorialsDivergenceTimeEstimation_BEAST_TargetCapture.md)<br>A tutorial to estimate time-calibrated phylogenies with BEAST
 
 * [Ancestral State Reconstruction](https://github.com/joyceem/MPEP_tutorials/blob/main/tutorials/Ancestral_Trait_Reconstruction.md)<br>A tutorial to run ancestral state reconstructions of discrete character with  Mk models in a likelihood framework.
 
