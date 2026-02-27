@@ -39,9 +39,9 @@ In this tutorial, we will conduct an analysis in BEAST with gene shopping to sho
 ### Gene shopping
 In Bayesian divergence dating methods, the alignment of molecular data is incorporated into the estimation of ages. However, given the computational intensity of Bayesian Inference, it is often not feasible to incorporate hundreds of loci into the analysis. So, the alignment size can be reduced. There are many ways to approach this, but for this exercise, we will use the [SortaDate](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0197433) pipeline.
 
-SortaDate is a pipeline that enables us to shop for the 'best' genes for dating by comparing the tree length, root-to-tip vairance, and bipartition support (i.e. similarity to species tree) of each gene tree.
+SortaDate is a pipeline that enables us to shop for the 'best' genes for dating by comparing the tree length, root-to-tip vairance, and bipartition concordance (i.e. similarity to species tree) of each gene tree.
 
-In the directory `20_gene_shopping`, I have copied the [MO gene trees you made last week](https://github.com/dfmoralesb/MPE_tutorials/blob/main/tutorials/ORTHOLOGY.md#orthology-inference) into the directory `00_gene_trees`.
+In the directory `20_gene_shopping`, I have copied the [MO gene trees you made last week](https://github.com/dfmoralesb/MPEP_tutorials_2026/blob/main/tutorials/ORTHOLOGY.md#orthology-inference) into the directory `00_gene_trees`.
 
 Before we can compare gene trees, we must make sure our gene trees are all rooted in the same way.
 
@@ -97,7 +97,7 @@ Interpretation:
  - Long tree length → High evolutionary divergence.
  - Short tree length → Low evolutionary divergence.
 
-Now, we can calculate the bipartition support of all gene trees with `get_bp_genetrees.py`:
+Now, we can calculate the bipartition concordance of all gene trees with `get_bp_genetrees.py`:
 ```bash
 python scripts/SortaDate/src/get_bp_genetrees.py -h
 ```
@@ -108,7 +108,7 @@ Now we can run the script with the command:
 python scripts/SortaDate/src/get_bp_genetrees.py rerooted_gene_trees 00_species_tree/meliaceae_334_MO_orthologs.ASTRAL.tre --flend .rr --outf bpsupp
 ```
 
-**Bipartition support** is a measure of how the topology of the similarity in the topology of each gene tree to the topology of your species tree.
+**Bipartition concordance** proportion of species-tree bipartitions recovered by each gene tree (1 = perfect match, 0 = none).
 
 Inspect the output:
 ```
@@ -117,7 +117,7 @@ head bpsupp
 ```
 What does it show?
 
-Now that we have the root-to-tip variance, tree length and the bipartition support in separate tables (`bpsupp` and `r2tvar`) we need to combine the results together. This can be done with the `combine_results.py` SortaDate script:
+Now that we have the root-to-tip variance, tree length and the bipartition concordance in separate tables (`bpsupp` and `r2tvar`) we need to combine the results together. This can be done with the `combine_results.py` SortaDate script:
 ```bash
 python scripts/SortaDate/src/combine_results.py r2tvar bpsupp --outf combined
 
@@ -125,7 +125,7 @@ head combined
 ```
 
 Now that our statistics are all in one place, we can sort and get the list of the three best genes. We are using three genes for the purposes of this tutorial, but use the right number for your dataset to balance the amount of information included vs. computational time. To choose our 'best' three genes for dating, we will sort the genes according to: 
-1. 3 (bipartition support, i.e. similarity to species tree), 
+1. 3 (bipartition concordance, i.e. similarity to species tree), 
 2. 1 (root-to-tip variance), 
 3. 2 (tree length). 
 
@@ -185,7 +185,7 @@ We are not implementing tip dates in this exercise, so skip to the `Site Model` 
 ### Clock Model
   Next, in the `Clock Model` panel, we can set up how our molecular clock is applied. Select which type of clock model you would like to use. 
   - We will choose the `Relaxed Clock Log Normal`.
-  - Keep the number of discrete rates to -1. This keeps the number of substitution parameters equal to the number of branches in the tree.
+  - If using an old verion of BEAUti: Keep the number of discrete rates to -1. This keeps the number of substitution parameters equal to the number of branches in the tree.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfPyUdQVqS6X2d576LnDherqXYiHrKCCGJ_lkYZOjYId-evHgMl3KjcCxrb41VIFH258vaTH8j_3n-yZVZi6GPSefxsCEgGJiX_1UFuqe_YjqnYOIrYdhlVN2roAfoba53DKiTK-knFAYboYbIFzUCTuio?key=Nqw43J4UWJ1wNgJRDTzDDg)
 
@@ -200,7 +200,8 @@ You can change the distribution of the `BDBirthRate.t` and `BDDeathRate.t` prior
 ![](https://github.com/joyceem/MPEP_tutorials/blob/e698d8b83e053d36a99e2e21da6d704bbe738696/tutorials/images/Pasted%20image%2020250225144108.png)
 
 #### Fossil calibrations
-Yesterday, in [Divergence time estimation I](https://github.com/joyceem/MPEP_tutorials/blob/main/tutorials/DivergenceTimeEstimation_FossilCalibrations.md), we assessed some extinct fossil taxa that have been described for Meliaceae, and their suitability for calibrating nodes. We are going to use the following fossils to calibrate our tree:
+
+We are going to use the following fossils to calibrate our tree:
 
 | **No.** | **Calibration**                   | **Age (Ma)** | **Node calibrated** | **Reference**                              |
 | ------- | --------------------------------- | ------------ | ------------------- | ------------------------------------------ |
@@ -222,7 +223,7 @@ Now that we have reliably identified and dated fossils, and know which nodes we 
 
 Add a new prior for each fossil that will be used for calibration using the above tree and tables as a guide.
 
-To add a prior, click `+ Add Prior` at the bottom of the window.
+To add a prior, click `+ Add Prior` at the bottom of the window and choose `MRCA prior`
 
 **Label** the prior with an **informative name without spaces**. Then, **choose the taxa** to be included for this calibration.
 
@@ -265,14 +266,12 @@ To get your starting tree ready, perform a quick Penalised Likelihood dating pro
 In R, load your packages, set your working directory to your `21_dating folder`, and read your starting tree. For our starting tree, we will use the rooted ASTRAL species tree that you estimated last week. I have copied this tree to the `00_species_tree` folder of your directory.
 
 ```R
-#Install ape if necessary
-#install.packages("ape")
 
 #Load ape
 library(ape)  
 
 #Be sure to enter the correct path here!
-setwd("~/21_dating")
+setwd("/data_tmp/$USERNAME/data/21_dating/"")
 
 #Read your species tree
 tree <- read.tree("00_species_tree/meliaceae_334_MO_orthologs.ASTRAL.tre.rr")  
@@ -379,22 +378,23 @@ Save the model as an `.xml` file with the same name as your `tracelog` and `tree
 
 ![](https://github.com/joyceem/MPEP_tutorials/blob/1ef2631b89ceb9d3beda58e8a0351749ebc54852/tutorials/images/Pasted%20image%2020250225164607.png)
 
-## Run BEAST
-Now we can run our divergence dating model saved as an `.xml` file in BEAST.
-
 We always want to run multiple MCMC chains of our model to increase our sample size, check convergence and ensure that we have found the global optimum in our tree space. To do this we can edit our `.xml` files directly to quickly set up multiple `.xml` files that can be run simultaneously.
-- Open your `Meli_3loci_UCLN_fixtree_10M1k-run1.xml` file in a plain text editor.
-- Scroll down to the `tracelog logger` block of the `.xml` file. Change the `fileName` to have a different run name, i.e. `Meli_3loci_UCLN_fixtree_10M1k-run2.log`
-![](https://github.com/joyceem/MPEP_tutorials/blob/1ef2631b89ceb9d3beda58e8a0351749ebc54852/tutorials/images/Pasted%20image%2020250225165235.png)
-- Scroll down to the `treelog logger` block of the `.xml` file. Change the `fileName` to match the new `tracelog` `fileName`, i.e. `Meli_3loci_UCLN_fixtree_10M1k-run2.trees`
-![](https://github.com/joyceem/MPEP_tutorials/blob/1ef2631b89ceb9d3beda58e8a0351749ebc54852/tutorials/images/Pasted%20image%2020250225165340.png)
-- Now save this .xml file under a new name to match the new names of the `treelog` and `tracelog`
-	- Save as… `Meli_3loci_UCLN_fixtree_10M1k-run2.xml`
 
-Repeat this with subsequent numbers to create additional BEAST runs. For the purposes of this tutorial, we will run 5 runs, but it's not uncommon to need more.
-![](https://github.com/joyceem/MPEP_tutorials/blob/1ef2631b89ceb9d3beda58e8a0351749ebc54852/tutorials/images/Pasted%20image%2020250225165959.png)
+Change the the name of the `tracelog` and `treelog` to 
+
+`Meli_3loci_UCLN_fixtree_10M1k-run2.log`
+and
+`Meli_3loci_UCLN_fixtree_10M1k-run2.trees`
+
+And save is as `Meli_3loci_UCLN_fixtree_10M1k-run2.xml`
+
+Repeat this with subsequent numbers to create additional BEAST runs. For the purposes of this tutorial, we will run `5` runs, but it's not uncommon to need more.
 
 Having multiple `.xml` files means you can run all `.xml` files at the same time, and the output will be logged with the relevant run name.
+
+
+## Run BEAST
+
 
 Now, transfer your `.xml` files to your `21_dating` folder on the workstation.
 
