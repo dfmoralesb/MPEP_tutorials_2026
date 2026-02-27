@@ -1,4 +1,4 @@
-# Divergence Time Estimation II
+# Divergence Time Estimation
 ## Node dating in BEAST with large datasets
 Elizabeth M. Joyce 
 
