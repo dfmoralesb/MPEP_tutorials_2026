@@ -19,7 +19,7 @@ This repository contains the instructions and tutorials for the **Molecular Phyl
 
 #### How to login to the workstation
 
-	ssh -p 22110 $USERNAME@xx.xxx.xxx.xx
+	ssh -p 22110 $USERNAME@10.153.134.10
 	
 The IP and password will be provided at the beginning of the first tutorial. 
 
