@@ -103,7 +103,7 @@ Line 4 encodes the quality values (in ASCII encoding) for the sequence in Line 2
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
 
-	scp -P 22110 USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/00_raw_reads/MELI_Aglaia_spectabilis_G09645_R1_fastqc.html ~/Desktop
+	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/00_raw_reads/MELI_Aglaia_spectabilis_G09645_R1_fastqc.html ~/Desktop
 	
 * Open the `html` file in your internet browser, and you should see something like this<p align="center"><img src="images/fastqc.png" alt="fastqc" width="900"></p>
 
@@ -136,7 +136,7 @@ Line 4 encodes the quality values (in ASCII encoding) for the sequence in Line 2
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/00_raw_reads/multiqc_report_raw.html ~/Desktop
+	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/00_raw_reads/multiqc_report_raw.html ~/Desktop
 	
 * Open the `html` file in your internet browser, and you should see something like the picture below. If you want to watch a detailed tutorial, go [here](https://www.youtube.com/watch?v=qPbIlO_KWN0)
 
@@ -149,7 +149,7 @@ Line 4 encodes the quality values (in ASCII encoding) for the sequence in Line 2
 #### There you can find the report for this and future steps for all samples.
 
 
-	scp -P 22110 USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/multiqc_report_all_samples_raw.html ~/Desktop
+	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/multiqc_report_all_samples_raw.html ~/Desktop
 
 
 <p align="center"><img src="images/multiqc_raw_all.png" alt="multiqcrawall" width="900"></p>
@@ -202,7 +202,7 @@ Line 4 encodes the quality values (in ASCII encoding) for the sequence in Line 2
 
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 
-	scp -P 22110 USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/01_dedup/multiqc_report_dedup.html .
+	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/data/01_dedup/multiqc_report_dedup.html ~/Desktop
 
 * Open the `html` file in your internet browser<p align="center"><img src="images/multiqc_dedup.png" alt="multiqcdedup" width="900"></p>
 
@@ -212,7 +212,7 @@ Line 4 encodes the quality values (in ASCII encoding) for the sequence in Line 2
 	
 #### THIS NEEDS TO BE TYPED IN A WINDOW ON YOUR LOCAL COMPUTER, NOT WHILE YOU ARE CONNECTED TO THE WORKSTATION. JUST OPEN A NEW TERMINAL WINDOW.
 	
-	scp -P 22110 USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/multiqc_report_all_samples_dedup.html ~/Desktop
+	scp -P 22110 $USERNAME@10.153.134.10:/data_tmp/$USERNAME/output/all_samples_reports/multiqc_report_all_samples_dedup.html ~/Desktop
 
 
 <p align="center"><img src="images/multiqc_dedup_all.png" alt="multiqcdedupwall" width="900"></p>
