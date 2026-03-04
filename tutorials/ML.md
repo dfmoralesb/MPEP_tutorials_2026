@@ -173,7 +173,7 @@ The partition file specifies the kind of partition `DNA` a unique name of each p
 
 		conda activate captus
 
-		iqtree  -m MFP --merge -s meliaceae_4_loci_concat.fa -T 4 -B 1000 -p meliaceae_4_loci_concat.model --prefix meliaceae_4_loci_concat_iqtree
+		iqtree  -m MFP --merge -s meliaceae_4_loci_concat.fa -T 2 -B 1000 -p meliaceae_4_loci_concat.model --prefix meliaceae_4_loci_concat_iqtree
 
 * Running this analysis should take longer than the previous analyses of one individual locus. One way to speed things up is by running IQ-TREE using multiple CPUs with the `-T` options. In this case, I will use `-T 2`. If you are not sure about the number of CPUs available, you can use `-T AUTO`
 
