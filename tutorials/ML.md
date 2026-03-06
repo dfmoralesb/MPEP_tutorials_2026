@@ -198,7 +198,7 @@ The partition file specifies the kind of partition `DNA` a unique name of each p
 <p align="center"><img src="images/concat.png" alt="concat" width="900"></p>
 
 
-#### Inferring trees with TREE-QMC
+# Inferring trees with TREE-QMC
 
 	cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses
 
