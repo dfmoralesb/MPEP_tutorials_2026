@@ -216,7 +216,7 @@ The partition file specifies the kind of partition `DNA` a unique name of each p
 
 	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -h
 
-
+	cd 07_b_TREE_QMC
 
 
 	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
