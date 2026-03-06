@@ -197,3 +197,146 @@ The partition file specifies the kind of partition `DNA` a unique name of each p
 
 <p align="center"><img src="images/concat.png" alt="concat" width="900"></p>
 
+
+#### Inferring trees with TREE-QMC
+
+	cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses
+
+	mkdir 07_b_TREE_QMC
+
+	cp /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_astral/meliaceae_334_MO_orthologs.tre /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_b_TREE_QMC
+	cp /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_astral/meliaceae_334_MO_orthologs.col_20.tre /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_b_TREE_QMC	
+	cp /data_tmp/mpemaster/data/07_phylogenomic_analyses/10_astral-pro/meliaceae_348_homologs_short_label.tre  /data_tmp/mpemaster/data/07_phylogenomic_analyses/07_b_TREE_QMC
+
+	/data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -h
+
+
+	/data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
+
+TREE-QMC version 3.0.5
+COMMAND: /data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
+
+SETTINGS:
+input file: meliaceae_334_MO_orthologs.col_20.tre
+output file: meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
+weighting mode: none
+  WARNING: --hybrid option is recommended
+normalization for artifical taxa mode: n2
+execution mode: efficient
+random seed for refinement: 12345
+random seed for max-cut: 1
+max-cut heuristic iteration limit: 10
+
+LOGGING:
+Reading input
+Found
+    334 trees
+    30 taxa
+    34 polytomies across all trees
+
+
+	cat meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
+
+
+	((((((((((MELI_Aglaia_spectabilis,MELI_Aphanamixis_polystachya),MELI_Cabralea_canjerana),MELI_Dysoxylum_alliaceum),MELI_Chisocheton_longistipitatus),((MELI_Heckeldora_staudtii,MELI_Turraeanthus_manii),(MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens))),MELI_Vavaea_amicorum),(MELI_Trichilia_hirta,MELI_Turraea_virens)),MELI_Munronia_pinnata),MELI_Quivisianthe_papinae),((((((MELI_Swietenia_macrophylla,MELI_Swietenia_mahagoni),MELI_Carapa_procera),(((MELI_Cedrela_montana,MELI_Cedrela_saltensis),MELI_Toona_ciliata),MELI_Lovoa_sywnnertonii)),(MELI_Schmardaea_microphylla,MELI_Chukrasia_tabularis)),((RUTA_Citrus_hystrix,RUTA_Ruta_graveolens),RUTA_Melicope_ternata)),(((MELI_Azadirachta_indica,MELI_Melia_azedarach),MELI_Owenia_reticulata),MELI_Pterorhachis_zenkeri)));
+
+
+	/data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.tre -w h -S -o  meliaceae_334_MO_orthologs.wTREEQMC-h.tre
+
+
+
+TREE-QMC version 3.0.5
+COMMAND: /data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.tre -w h -S -o meliaceae_334_MO_orthologs.wTREEQMC-h.tre
+
+SETTINGS:
+input file: meliaceae_334_MO_orthologs.tre
+output file: meliaceae_334_MO_orthologs.wTREEQMC-h.tre
+weighting mode: hybrid
+support min: 0
+support max: 100
+support default: 0
+normalization for artifical taxa mode: n2
+execution mode: efficient
+random seed for refinement: 12345
+random seed for max-cut: 1
+max-cut heuristic iteration limit: 10
+
+LOGGING:
+Reading input
+Found
+334 trees
+30 taxa
+0 polytomies across all trees
+
+
+cat meliaceae_334_MO_orthologs.wTREEQMC-h.tre
+
+((((((((((MELI_Aglaia_spectabilis,MELI_Aphanamixis_polystachya),MELI_Cabralea_canjerana),MELI_Dysoxylum_alliaceum),MELI_Chisocheton_longistipitatus),((MELI_Heckeldora_staudtii,MELI_Turraeanthus_manii),(MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens))),MELI_Vavaea_amicorum),(MELI_Trichilia_hirta,MELI_Turraea_virens)),MELI_Munronia_pinnata),MELI_Quivisianthe_papinae),((((((MELI_Swietenia_macrophylla,MELI_Swietenia_mahagoni),MELI_Carapa_procera),(((MELI_Cedrela_montana,MELI_Cedrela_saltensis),MELI_Toona_ciliata),MELI_Lovoa_sywnnertonii)),(MELI_Schmardaea_microphylla,MELI_Chukrasia_tabularis)),((RUTA_Citrus_hystrix,RUTA_Ruta_graveolens),RUTA_Melicope_ternata)),(((MELI_Azadirachta_indica,MELI_Melia_azedarach),MELI_Owenia_reticulata),MELI_Pterorhachis_zenkeri)));
+
+
+/data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -o meliaceae_334_MO_orthologs.TQMC-pro.tre
+
+
+TREE-QMC version 3.0.5
+COMMAND: /data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -o meliaceae_334_MO_orthologs.TQMC-pro.tre
+
+SETTINGS:
+input file: meliaceae_348_homologs_short_label.tre
+output file: meliaceae_334_MO_orthologs.TQMC-pro.tre
+weighting mode: none
+  WARNING: --hybrid option is recommended
+normalization for artifical taxa mode: n2
+execution mode: efficient
+random seed for refinement: 12345
+random seed for max-cut: 1
+max-cut heuristic iteration limit: 10
+
+LOGGING:
+Reading input
+Found
+348 trees
+30 taxa
+0 polytomies across all trees
+    
+    
+	cat meliaceae_334_MO_orthologs.TQMC-pro.tre
+
+	((((((((((MELI_Aphanamixis_polystachya,MELI_Aglaia_spectabilis),MELI_Cabralea_canjerana),MELI_Dysoxylum_alliaceum),MELI_Chisocheton_longistipitatus),(((MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens),MELI_Heckeldora_staudtii),MELI_Turraeanthus_manii)),MELI_Vavaea_amicorum),(MELI_Turraea_virens,MELI_Trichilia_hirta)),MELI_Munronia_pinnata),MELI_Quivisianthe_papinae),((((((MELI_Swietenia_mahagoni,MELI_Swietenia_macrophylla),MELI_Carapa_procera),(((MELI_Cedrela_montana,MELI_Cedrela_saltensis),MELI_Toona_ciliata),MELI_Lovoa_sywnnertonii)),(MELI_Schmardaea_microphylla,MELI_Chukrasia_tabularis)),((RUTA_Citrus_hystrix,RUTA_Ruta_graveolens),RUTA_Melicope_ternata)),(((MELI_Melia_azedarach,MELI_Azadirachta_indica),MELI_Owenia_reticulata),MELI_Pterorhachis_zenkeri)));
+
+
+
+	/data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -w h -S -o meliaceae_334_MO_orthologs.wTQMC-pro-h.tre
+
+
+TREE-QMC version 3.0.5
+COMMAND: /data_tmp/mpemaster/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -w h -S -o meliaceae_334_MO_orthologs.wTQMC-pro-h.tre
+
+SETTINGS:
+input file: meliaceae_348_homologs_short_label.tre
+output file: meliaceae_334_MO_orthologs.wTQMC-pro-h.tre
+weighting mode: hybrid
+support min: 0
+support max: 100
+support default: 0
+normalization for artifical taxa mode: n2
+execution mode: efficient
+random seed for refinement: 12345
+random seed for max-cut: 1
+max-cut heuristic iteration limit: 10
+
+LOGGING:
+Reading input
+Found
+348 trees
+30 taxa
+0 polytomies across all trees
+    
+
+	cat meliaceae_334_MO_orthologs.wTQMC-pro-h.tre
+
+
+	(((((((MELI_Swietenia_mahagoni,MELI_Swietenia_macrophylla),MELI_Carapa_procera),(((MELI_Cedrela_montana,MELI_Cedrela_saltensis),MELI_Toona_ciliata),MELI_Lovoa_sywnnertonii)),(MELI_Schmardaea_microphylla,MELI_Chukrasia_tabularis)),((RUTA_Citrus_hystrix,RUTA_Ruta_graveolens),RUTA_Melicope_ternata)),(((MELI_Melia_azedarach,MELI_Azadirachta_indica),MELI_Owenia_reticulata),MELI_Pterorhachis_zenkeri)),(((((((((MELI_Aphanamixis_polystachya,MELI_Aglaia_spectabilis),MELI_Cabralea_canjerana),MELI_Dysoxylum_alliaceum),MELI_Chisocheton_longistipitatus),(((MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens),MELI_Turraeanthus_manii),MELI_Heckeldora_staudtii)),MELI_Vavaea_amicorum),(MELI_Turraea_virens,MELI_Trichilia_hirta)),MELI_Munronia_pinnata),MELI_Quivisianthe_papinae));    
+
+
+
+
