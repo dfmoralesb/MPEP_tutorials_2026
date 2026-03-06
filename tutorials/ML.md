@@ -219,7 +219,7 @@ The partition file specifies the kind of partition `DNA` a unique name of each p
 	cd 07_b_TREE_QMC
 
 
-	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
+	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.col_20.TREEQMC.tre --support
 
 TREE-QMC version 3.0.5
 COMMAND: /data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.col_20.tre -o meliaceae_334_MO_orthologs.col_20.TREEQMC.tre
@@ -254,7 +254,7 @@ Found
 
 
 
-	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.tre -w h -S -o  meliaceae_334_MO_orthologs.wTREEQMC-h.tre
+	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_334_MO_orthologs.tre -w h -S -o  meliaceae_334_MO_orthologs.wTREEQMC-h.tre --support
 
 
 
@@ -320,7 +320,7 @@ Found
 
 
 
-	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -w h -S -o meliaceae_334_MO_orthologs.wTQMC-pro-h.tre
+	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -w h -S -o meliaceae_334_MO_orthologs.wTQMC-pro-h.tre --support
 
 
 TREE-QMC version 3.0.5
