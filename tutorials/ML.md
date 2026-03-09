@@ -282,12 +282,12 @@ Found
 0 polytomies across all trees
 
 
-cat meliaceae_334_MO_orthologs.wTREEQMC-h.tre
+	cat meliaceae_334_MO_orthologs.wTREEQMC-h.tre
 
-((((((((((MELI_Aglaia_spectabilis,MELI_Aphanamixis_polystachya),MELI_Cabralea_canjerana),MELI_Dysoxylum_alliaceum),MELI_Chisocheton_longistipitatus),((MELI_Heckeldora_staudtii,MELI_Turraeanthus_manii),(MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens))),MELI_Vavaea_amicorum),(MELI_Trichilia_hirta,MELI_Turraea_virens)),MELI_Munronia_pinnata),MELI_Quivisianthe_papinae),((((((MELI_Swietenia_macrophylla,MELI_Swietenia_mahagoni),MELI_Carapa_procera),(((MELI_Cedrela_montana,MELI_Cedrela_saltensis),MELI_Toona_ciliata),MELI_Lovoa_sywnnertonii)),(MELI_Schmardaea_microphylla,MELI_Chukrasia_tabularis)),((RUTA_Citrus_hystrix,RUTA_Ruta_graveolens),RUTA_Melicope_ternata)),(((MELI_Azadirachta_indica,MELI_Melia_azedarach),MELI_Owenia_reticulata),MELI_Pterorhachis_zenkeri)));
+	((((((((((MELI_Aglaia_spectabilis,MELI_Aphanamixis_polystachya),MELI_Cabralea_canjerana),MELI_Dysoxylum_alliaceum),MELI_Chisocheton_longistipitatus),((MELI_Heckeldora_staudtii,MELI_Turraeanthus_manii),(MELI_Neoguarea_glomerulata,MELI_Guarea_pubescens))),MELI_Vavaea_amicorum),(MELI_Trichilia_hirta,MELI_Turraea_virens)),MELI_Munronia_pinnata),MELI_Quivisianthe_papinae),((((((MELI_Swietenia_macrophylla,MELI_Swietenia_mahagoni),MELI_Carapa_procera),(((MELI_Cedrela_montana,MELI_Cedrela_saltensis),MELI_Toona_ciliata),MELI_Lovoa_sywnnertonii)),(MELI_Schmardaea_microphylla,MELI_Chukrasia_tabularis)),((RUTA_Citrus_hystrix,RUTA_Ruta_graveolens),RUTA_Melicope_ternata)),(((MELI_Azadirachta_indica,MELI_Melia_azedarach),MELI_Owenia_reticulata),MELI_Pterorhachis_zenkeri)));
 
 
-/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -o meliaceae_334_MO_orthologs.TQMC-pro.tre
+	/data_tmp/$USERNAME/apps/TREE-QMC/tree-qmc -i meliaceae_348_homologs_short_label.tre -o meliaceae_334_MO_orthologs.TQMC-pro.tre --support
 
 
 TREE-QMC version 3.0.5
