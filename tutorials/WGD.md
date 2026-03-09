@@ -305,7 +305,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 
 		mkdir 14_phytop
 
-		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/15_phytop
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/14_phytop
 	
 	We will copy the same input that we used for ASTRAL yesterday
 
@@ -536,7 +536,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 		
 	Now, we are ready to prepare the files for running PhyloNet
 	
-		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/14_phylonet
+		cd /data_tmp/$USERNAME/data/07_phylogenomic_analyses/15_phylonet
 
 		
 	Let's make a new directory were we will be running PhyloNet
@@ -559,7 +559,7 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 		
 	Check that all you less are rooted
 	
-		less meliaceae_234_MO_7taxa.tre.col_20.tre
+		less meliaceae_234_MO_7taxa.tre.rr
 		
 	You should see that all trees start with `RUTA_Citrus_hystrix`
 	
