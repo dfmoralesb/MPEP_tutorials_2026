@@ -714,6 +714,10 @@ Phytop takes ASTRAL’s quartet frequencies around each species-tree branch and 
 
 		grep -A 1 "Network" meliaceae_234_MO_7taxa.phylonet_MP_1hyb.txt | sed -E 's/Inferred.+//' | sed -E 's/^--//' | sed '/^$/d' > meliaceae_234_MO_7taxa.phylonet_MP_1hyb.phyloplots.txt
 
+
+		(((((MELI_Azadirachta_indica,MELI_Owenia_reticulata),((MELI_Toona_ciliata,MELI_Swietenia_macrophylla))#H1:::0.748),(MELI_Aglaia_spectabilis,MELI_Quivisianthe_papinae)),#H1:::0.252),RUTA_Citrus_hystrix);
+
+
 	Now let's open Julia and load the PhyloPlots and other necessary packages 
 	
 		conda activate Juila
